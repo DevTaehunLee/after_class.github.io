@@ -1,882 +1,923 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>After Class — SFSU Office Hours</title>
-
-  <style>
-    /* =========================================================
-       AFTER CLASS — WEB VERSION
-       ========================================================= */
-
-    * {
-      box-sizing: border-box;
-      font-family: "Times New Roman", Times, serif;
-    }
-
-    html {
-      font-size: 12pt;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-size: 12pt;
-      text-align: justify;
-      color: #211b2d;
-
-      background:
-        radial-gradient(
-          circle at 10% 0%,
-          #7655a9 0,
-          transparent 34%
-        ),
-        linear-gradient(
-          135deg,
-          #321d5f 0%,
-          #4b2e83 42%,
-          #63439a 100%
-        );
-    }
-
-    :root {
-      --sfsu-purple: #4b2e83;
-      --sfsu-purple-dark: #321d5f;
-      --sfsu-purple-light: #eee9f8;
-      --ink: #211b2d;
-      --muted: #756d80;
-      --line: #e8e3ed;
-      --white: #ffffff;
-      --page: #f5f2f8;
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    header {
-      height: 82px;
-      background: rgba(255,255,255,.97);
-      border-bottom: 1px solid rgba(255,255,255,.3);
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 42px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    /*
-      ==========================================================
-      LOGO
-
-      Replace this placeholder with your actual logo.
-
-      Example:
-
-      <img
-        src="after-class-logo.png"
-        class="logo-image"
-        alt="After Class"
-      >
-
-      ==========================================================
-    */
-      <img
-        src="after-class-logo.png"
-        class="logo-image"
-        alt="After Class"
-      >
-    
-    .logo-placeholder {
-      width: 46px;
-      height: 46px;
-
-      border-radius: 10px;
-
-      background: var(--sfsu-purple);
-      color: white;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+<title>After Class — SFSU Office Hours</title>
 
-      font-weight: 900;
-      font-size: 17px;
-    }
+<style>
 
-    .logo-image {
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-    }
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
-    .brand-name {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-    }
+* {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
 
-    .brand-name span {
-      font-weight: 400;
-    }
+html {
+  font-size: 12pt;
+}
 
-    .sfsu-label {
-      color: var(--sfsu-purple);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .5px;
-    }
+:root {
+  --sfsu-purple: #4b2e83;
+  --sfsu-purple-dark: #321d5f;
+  --sfsu-purple-light: #eee9f8;
 
+  --ink: #211b2d;
+  --muted: #756d80;
+  --line: #e8e3ed;
 
-    /* =========================================================
-       MAIN PAGE
-       ========================================================= */
+  --white: #ffffff;
+  --page: #f5f2f8;
+}
 
-    .page {
-      min-height: calc(100vh - 82px);
+body {
+  margin: 0;
+  min-height: 100vh;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  font-size: 12pt;
+  text-align: justify;
 
-      padding: 48px 40px 60px;
-    }
+  color: var(--ink);
 
-    .content {
-      width: 100%;
-      max-width: 1180px;
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      #7655a9 0,
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #321d5f 0%,
+      #4b2e83 42%,
+      #63439a 100%
+    );
+}
 
-      display: grid;
-      grid-template-columns: 330px 1fr;
 
-      gap: 55px;
-      align-items: center;
-    }
+/* =========================================================
+   HEADER
+   ========================================================= */
 
+header {
+  height: 82px;
 
-    /* =========================================================
-       LEFT INTRO
-       ========================================================= */
+  background: rgba(255, 255, 255, 0.97);
 
-    .intro {
-      color: white;
-      padding: 20px 0;
-      text-align: left;
-    }
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.3);
 
-    .eyebrow {
-      display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-      padding: 7px 12px;
+  padding: 0 42px;
+}
 
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 999px;
+.brand {
+  display: flex;
+  align-items: center;
 
-      background: rgba(255,255,255,.09);
+  gap: 13px;
+}
 
-      font-size: 11px;
-      font-weight: 800;
 
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+/* =========================================================
+   LOGO
+   ========================================================= */
 
-      margin-bottom: 20px;
-    }
+.logo-placeholder {
+  width: 46px;
+  height: 46px;
 
-    .intro h1 {
-      font-size: 52px;
-      line-height: .98;
+  border-radius: 10px;
 
-      letter-spacing: -3px;
+  background: var(--sfsu-purple);
+  color: white;
 
-      margin: 0 0 20px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .intro h1 span {
-      opacity: .72;
-      font-weight: 400;
-    }
+  font-weight: 900;
+  font-size: 17px;
+}
 
-    .intro p {
-      max-width: 300px;
+.logo-image {
+  width: 46px;
+  height: 46px;
 
-      font-size: 16px;
-      line-height: 1.65;
+  object-fit: contain;
 
-      color: rgba(255,255,255,.78);
+  display: none;
+}
 
-      margin: 0;
-    }
+.brand-name {
+  font-size: 25px;
 
-    .how {
-      margin-top: 35px;
+  font-weight: 800;
 
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+  letter-spacing: -1.2px;
+}
 
-    .how-row {
-      display: flex;
-      align-items: center;
+.brand-name span {
+  font-weight: 400;
+}
 
-      gap: 12px;
+.sfsu-label {
+  color: var(--sfsu-purple);
 
-      font-size: 13px;
+  font-size: 13px;
 
-      color: rgba(255,255,255,.85);
-    }
+  font-weight: 700;
 
-    .how-number {
-      width: 27px;
-      height: 27px;
+  letter-spacing: 0.5px;
+}
 
-      border-radius: 50%;
 
-      background: rgba(255,255,255,.13);
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.page {
+  min-height: calc(100vh - 82px);
 
-      font-weight: 800;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  padding: 48px 40px 60px;
+}
 
-    /* =========================================================
-       APP PANEL
-       ========================================================= */
+.content {
+  width: 100%;
+  max-width: 1180px;
 
-    .app-panel {
-      position: relative;
+  display: grid;
 
-      background: rgba(255,255,255,.98);
+  grid-template-columns: 330px 1fr;
 
-      border-radius: 30px;
+  gap: 55px;
 
-      padding: 28px;
+  align-items: center;
+}
 
-      box-shadow:
-        0 28px 70px rgba(21,10,42,.32);
 
-      min-height: 700px;
-    }
+/* =========================================================
+   LEFT INTRO
+   ========================================================= */
 
-    .panel-top {
-      text-align: left;
+.intro {
+  color: white;
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  padding: 20px 0;
 
-      margin-bottom: 20px;
-    }
+  text-align: left;
+}
 
-    .panel-title {
-      font-size: 18px;
-      font-weight: 800;
-    }
+.eyebrow {
+  display: inline-block;
 
-    .panel-subtitle {
-      color: var(--muted);
-      font-size: 12px;
+  padding: 7px 12px;
 
-      margin-top: 3px;
-    }
+  border:
+    1px solid rgba(255, 255, 255, 0.3);
 
-    .profile-counter {
-      background: var(--sfsu-purple-light);
-      color: var(--sfsu-purple);
+  border-radius: 999px;
 
-      padding: 7px 11px;
+  background:
+    rgba(255, 255, 255, 0.09);
 
-      border-radius: 999px;
+  font-size: 11px;
 
-      font-size: 11px;
-      font-weight: 800;
-    }
+  font-weight: 800;
 
+  letter-spacing: 1.5px;
 
-    /* =========================================================
-       PROFESSOR CARD DECK
-       ========================================================= */
+  text-transform: uppercase;
 
-    .deck {
-      position: relative;
+  margin-bottom: 20px;
+}
 
-      height: 485px;
+.intro h1 {
+  font-size: 52px;
 
-      max-width: 640px;
+  line-height: 0.98;
 
-      margin: 0 auto;
+  letter-spacing: -3px;
 
-      perspective: 1200px;
-    }
+  margin: 0 0 20px;
+}
 
-    .card {
-      position: absolute;
+.intro h1 span {
+  opacity: 0.72;
 
-      inset: 0;
+  font-weight: 400;
+}
 
-      border-radius: 23px;
+.intro p {
+  max-width: 300px;
 
-      overflow: hidden;
+  font-size: 16px;
 
-      background: white;
+  line-height: 1.65;
 
-      border: 1px solid var(--line);
+  color:
+    rgba(255, 255, 255, 0.78);
 
-      box-shadow:
-        0 14px 35px rgba(43,30,55,.13);
+  margin: 0;
+}
 
-      touch-action: none;
+.how {
+  margin-top: 35px;
 
-      user-select: none;
+  display: flex;
 
-      cursor: grab;
+  flex-direction: column;
 
-      transition:
-        transform .28s ease,
-        opacity .28s ease;
+  gap: 12px;
+}
 
-      text-align: left;
-    }
+.how-row {
+  display: flex;
 
-    .card:active {
-      cursor: grabbing;
-    }
+  align-items: center;
 
+  gap: 12px;
 
-    /* =========================================================
-       PROFESSOR PHOTO
-       =========================================================
+  font-size: 13px;
 
-       You can replace the placeholder with an actual image.
+  color:
+    rgba(255, 255, 255, 0.85);
+}
 
-       Example:
+.how-number {
+  width: 27px;
+  height: 27px;
 
-       <img
-         src="professor-a.jpg"
-         class="professor-photo"
-         alt="Professor A"
-       >
+  flex-shrink: 0;
 
-       =========================================================
-    */
+  border-radius: 50%;
 
-    .photo {
-      height: 225px;
+  background:
+    rgba(255, 255, 255, 0.13);
 
-      position: relative;
+  display: flex;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-      background:
-        linear-gradient(
-          135deg,
-          #e8e0f2,
-          #cfc1e3
-        );
-    }
+  font-weight: 800;
+}
 
-    .avatar-placeholder {
-      width: 125px;
-      height: 125px;
 
-      border-radius: 50%;
+/* =========================================================
+   APP PANEL
+   ========================================================= */
 
-      background: var(--sfsu-purple);
-      color: white;
+.app-panel {
+  position: relative;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  background:
+    rgba(255, 255, 255, 0.98);
 
-      font-size: 34px;
-      font-weight: 800;
+  border-radius: 30px;
 
-      box-shadow:
-        0 12px 28px rgba(75,46,131,.25);
-    }
+  padding: 28px;
 
-    .professor-photo {
-      width: 125px;
-      height: 125px;
+  box-shadow:
+    0 28px 70px rgba(21, 10, 42, 0.32);
 
-      border-radius: 50%;
+  min-height: 700px;
+}
 
-      object-fit: cover;
+.panel-top {
+  text-align: left;
 
-      box-shadow:
-        0 12px 28px rgba(0,0,0,.18);
-    }
+  display: flex;
 
-    .department {
-      position: absolute;
+  justify-content: space-between;
 
-      left: 15px;
-      top: 15px;
+  align-items: center;
 
-      padding: 7px 11px;
+  margin-bottom: 20px;
+}
 
-      background: rgba(255,255,255,.92);
+.panel-title {
+  font-size: 18px;
 
-      color: var(--sfsu-purple);
+  font-weight: 800;
+}
 
-      border-radius: 999px;
+.panel-subtitle {
+  color: var(--muted);
 
-      font-size: 10px;
-      font-weight: 800;
-    }
+  font-size: 12px;
 
-    .verified {
-      position: absolute;
+  margin-top: 3px;
+}
 
-      right: 15px;
-      top: 15px;
+.profile-counter {
+  background:
+    var(--sfsu-purple-light);
 
-      width: 31px;
-      height: 31px;
+  color:
+    var(--sfsu-purple);
 
-      border-radius: 50%;
+  padding: 7px 11px;
 
-      background: var(--sfsu-purple);
-      color: white;
+  border-radius: 999px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  font-size: 11px;
 
-      font-size: 12px;
-      font-weight: 900;
-    }
+  font-weight: 800;
+}
 
 
-    /* =========================================================
-       PROFESSOR INFORMATION
-       ========================================================= */
+/* =========================================================
+   CARD DECK
+   ========================================================= */
 
-    .info {
-      padding: 17px 20px;
-    }
+.deck {
+  position: relative;
 
-    .name-row {
-      display: flex;
+  height: 485px;
 
-      justify-content: space-between;
-      align-items: baseline;
+  max-width: 640px;
 
-      gap: 15px;
-    }
+  margin: 0 auto;
 
-    .name {
-      font-size: 23px;
-      font-weight: 800;
+  perspective: 1200px;
 
-      letter-spacing: -.8px;
-    }
+  touch-action: none;
+}
 
-    .faculty {
-      color: #aaa;
 
-      font-size: 11px;
+/* =========================================================
+   CARD
+   ========================================================= */
 
-      white-space: nowrap;
-    }
+.card {
+  position: absolute;
 
-    .role {
-      color: var(--sfsu-purple);
+  inset: 0;
 
-      font-size: 12px;
+  border-radius: 23px;
 
-      font-weight: 700;
+  overflow: hidden;
 
-      margin-top: 3px;
-    }
+  background: white;
 
-    .bio {
-      color: #5f5865;
+  border:
+    1px solid var(--line);
 
-      font-size: 12px;
+  box-shadow:
+    0 14px 35px rgba(43, 30, 55, 0.13);
 
-      line-height: 1.45;
+  user-select: none;
 
-      margin: 10px 0;
-    }
+  cursor: grab;
 
-    .tags {
-      display: flex;
+  touch-action: none;
 
-      flex-wrap: wrap;
+  transition:
+    transform 0.28s ease,
+    opacity 0.28s ease;
+}
 
-      gap: 5px;
-    }
+.card.dragging {
+  cursor: grabbing;
 
-    .tag {
-      background: #f3f0f6;
+  transition: none;
+}
 
-      color: #5e5666;
 
-      border-radius: 7px;
+/* =========================================================
+   PHOTO
+   ========================================================= */
 
-      padding: 5px 8px;
+.photo {
+  height: 225px;
 
-      font-size: 10px;
+  position: relative;
 
-      font-weight: 700;
-    }
+  display: flex;
 
-    .availability {
-      margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 
-      color: #777;
+  background:
+    linear-gradient(
+      135deg,
+      #e8e0f2,
+      #cfc1e3
+    );
+}
 
-      font-size: 11px;
-    }
+.avatar-placeholder {
+  width: 125px;
+  height: 125px;
 
-    .availability b {
-      color: #2d2633;
-    }
+  border-radius: 50%;
 
+  color: white;
 
-    /* =========================================================
-       SWIPE STAMPS
-       ========================================================= */
+  display: flex;
 
-    .stamp {
-      position: absolute;
+  align-items: center;
+  justify-content: center;
 
-      top: 25px;
+  font-size: 34px;
 
-      padding: 7px 12px;
+  font-weight: 800;
 
-      border: 3px solid;
+  box-shadow:
+    0 12px 28px rgba(75, 46, 131, 0.25);
+}
 
-      border-radius: 9px;
+.professor-photo {
+  width: 125px;
+  height: 125px;
 
-      font-weight: 900;
+  border-radius: 50%;
 
-      font-size: 18px;
+  object-fit: cover;
 
-      letter-spacing: 1px;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.18);
+}
 
-      opacity: 0;
+.department {
+  position: absolute;
 
-      pointer-events: none;
-    }
+  left: 15px;
+  top: 15px;
 
-    .like-stamp {
-      right: 20px;
+  padding: 7px 11px;
 
-      color: var(--sfsu-purple);
+  background:
+    rgba(255, 255, 255, 0.92);
 
-      border-color: var(--sfsu-purple);
+  color:
+    var(--sfsu-purple);
 
-      transform: rotate(12deg);
-    }
+  border-radius: 999px;
 
-    .nope-stamp {
-      left: 20px;
+  font-size: 10px;
 
-      color: #777;
+  font-weight: 800;
+}
 
-      border-color: #777;
+.verified {
+  position: absolute;
 
-      transform: rotate(-12deg);
-    }
+  right: 15px;
+  top: 15px;
 
+  width: 31px;
+  height: 31px;
 
-    /* =========================================================
-       ACTION BUTTONS
-       ========================================================= */
+  border-radius: 50%;
 
-    .actions {
-      display: flex;
+  background:
+    var(--sfsu-purple);
 
-      align-items: center;
-      justify-content: center;
+  color: white;
 
-      gap: 18px;
+  display: flex;
 
-      margin-top: 18px;
-    }
+  align-items: center;
+  justify-content: center;
 
-    .action {
-      border-radius: 50%;
+  font-size: 12px;
 
-      background: white;
+  font-weight: 900;
+}
 
-      border: 1px solid var(--line);
 
-      box-shadow:
-        0 5px 18px rgba(40,20,60,.08);
+/* =========================================================
+   INFORMATION
+   ========================================================= */
 
-      display: flex;
+.info {
+  padding: 17px 20px;
+}
 
-      align-items: center;
-      justify-content: center;
+.name-row {
+  display: flex;
 
-      cursor: pointer;
+  justify-content: space-between;
 
-      transition: .15s ease;
-    }
+  align-items: baseline;
 
-    .action:hover {
-      transform: scale(1.07);
-    }
+  gap: 15px;
+}
 
-    .pass {
-      width: 54px;
-      height: 54px;
+.name {
+  font-size: 23px;
 
-      color: #777;
+  font-weight: 800;
 
-      font-size: 22px;
-    }
+  letter-spacing: -0.8px;
+}
 
-    .like {
-      width: 64px;
-      height: 64px;
+.faculty {
+  color: #aaa;
 
-      color: var(--sfsu-purple);
+  font-size: 11px;
 
-      font-size: 27px;
+  white-space: nowrap;
+}
 
-      border: 2px solid var(--sfsu-purple);
-    }
+.role {
+  color:
+    var(--sfsu-purple);
 
-    .hint {
-      text-align: center;
+  font-size: 12px;
 
-      color: #aaa;
+  font-weight: 700;
 
-      font-size: 10px;
+  margin-top: 3px;
+}
 
-      margin-top: 10px;
-    }
+.bio {
+  color: #5f5865;
 
+  font-size: 12px;
 
-    /* =========================================================
-       MATCH SCREEN
-       ========================================================= */
+  line-height: 1.45;
 
-    .match {
-      position: absolute;
+  margin: 10px 0;
+}
 
-      inset: 0;
+.tags {
+  display: flex;
 
-      background: rgba(255,255,255,.98);
+  flex-wrap: wrap;
 
-      z-index: 50;
+  gap: 5px;
+}
 
-      display: none;
+.tag {
+  background: #f3f0f6;
 
-      align-items: center;
-      justify-content: center;
+  color: #5e5666;
 
-      flex-direction: column;
+  border-radius: 7px;
 
-      text-align: center;
+  padding: 5px 8px;
 
-      border-radius: 30px;
+  font-size: 10px;
 
-      padding: 40px;
-    }
+  font-weight: 700;
+}
 
-    .match.show {
-      display: flex;
-    }
+.availability {
+  margin-top: 10px;
 
-    .match-circle {
-      width: 92px;
-      height: 92px;
+  color: #777;
 
-      border-radius: 50%;
+  font-size: 11px;
+}
 
-      background: var(--sfsu-purple);
+.availability b {
+  color: #2d2633;
+}
 
-      color: white;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+/* =========================================================
+   STAMPS
+   ========================================================= */
 
-      font-size: 38px;
+.stamp {
+  position: absolute;
 
-      margin-bottom: 20px;
+  top: 25px;
 
-      box-shadow:
-        0 12px 30px rgba(75,46,131,.25);
-    }
+  padding: 7px 12px;
 
-    .match h2 {
-      font-size: 30px;
+  border: 3px solid;
 
-      letter-spacing: -1.2px;
+  border-radius: 9px;
 
-      margin: 0 0 8px;
-    }
+  font-weight: 900;
 
-    .match p {
-      color: #6e6872;
+  font-size: 18px;
 
-      max-width: 330px;
+  letter-spacing: 1px;
 
-      line-height: 1.5;
+  opacity: 0;
 
-      font-size: 13px;
-    }
+  pointer-events: none;
 
-    .book {
-      margin-top: 18px;
+  z-index: 10;
+}
 
-      border: none;
+.like-stamp {
+  right: 20px;
 
-      background: var(--sfsu-purple);
+  color:
+    var(--sfsu-purple);
 
-      color: white;
+  border-color:
+    var(--sfsu-purple);
 
-      border-radius: 999px;
+  transform:
+    rotate(12deg);
+}
 
-      padding: 13px 25px;
+.nope-stamp {
+  left: 20px;
 
-      font-weight: 800;
+  color: #777;
 
-      cursor: pointer;
-    }
+  border-color: #777;
 
-    .restart {
-      margin-top: 12px;
+  transform:
+    rotate(-12deg);
+}
 
-      border: none;
 
-      background: transparent;
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
 
-      color: #888;
+.actions {
+  display: flex;
 
-      cursor: pointer;
-    }
+  align-items: center;
 
+  justify-content: center;
 
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
+  gap: 18px;
 
-    @media (max-width: 900px) {
+  margin-top: 18px;
+}
 
-      .content {
-        grid-template-columns: 1fr;
+.action {
+  border-radius: 50%;
 
-        max-width: 700px;
-      }
+  background: white;
 
-      .intro {
-        text-align: center;
-      }
+  border:
+    1px solid var(--line);
 
-      .intro p {
-        margin: auto;
-      }
+  box-shadow:
+    0 5px 18px rgba(40, 20, 60, 0.08);
 
-      .how {
-        display: none;
-      }
+  display: flex;
 
-      .page {
-        padding-top: 30px;
-      }
-    }
+  align-items: center;
+  justify-content: center;
 
+  cursor: pointer;
 
-    @media (max-width: 600px) {
+  transition: 0.15s ease;
+}
 
-      header {
-        padding: 0 20px;
-      }
+.action:hover {
+  transform: scale(1.07);
+}
 
-      .sfsu-label {
-        display: none;
-      }
+.pass {
+  width: 54px;
+  height: 54px;
 
-      .page {
-        padding: 20px 12px 35px;
-      }
+  color: #777;
 
-      .intro h1 {
-        font-size: 39px;
-      }
+  font-size: 22px;
+}
 
-      .app-panel {
-        padding: 18px;
+.like {
+  width: 64px;
+  height: 64px;
 
-        border-radius: 22px;
-      }
+  color:
+    var(--sfsu-purple);
 
-      .deck {
-        height: 475px;
-      }
-    }
+  font-size: 27px;
 
-  </style>
+  border:
+    2px solid var(--sfsu-purple);
+}
+
+.hint {
+  text-align: center;
+
+  color: #aaa;
+
+  font-size: 10px;
+
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   MATCH SCREEN
+   ========================================================= */
+
+.match {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  z-index: 50;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  text-align: center;
+
+  border-radius: 30px;
+
+  padding: 40px;
+}
+
+.match.show {
+  display: flex;
+}
+
+.match-circle {
+  width: 92px;
+  height: 92px;
+
+  border-radius: 50%;
+
+  background:
+    var(--sfsu-purple);
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 38px;
+
+  margin-bottom: 20px;
+
+  box-shadow:
+    0 12px 30px rgba(75, 46, 131, 0.25);
+}
+
+.match h2 {
+  font-size: 30px;
+
+  letter-spacing: -1.2px;
+
+  margin: 0 0 8px;
+}
+
+.match p {
+  color: #6e6872;
+
+  max-width: 330px;
+
+  line-height: 1.5;
+
+  font-size: 13px;
+}
+
+.book {
+  margin-top: 18px;
+
+  border: none;
+
+  background:
+    var(--sfsu-purple);
+
+  color: white;
+
+  border-radius: 999px;
+
+  padding: 13px 25px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.restart {
+  margin-top: 12px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #888;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .content {
+    grid-template-columns: 1fr;
+
+    max-width: 700px;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .intro p {
+    margin: auto;
+  }
+
+  .how {
+    display: none;
+  }
+
+  .page {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 0 20px;
+  }
+
+  .sfsu-label {
+    display: none;
+  }
+
+  .page {
+    padding: 20px 12px 35px;
+  }
+
+  .intro h1 {
+    font-size: 39px;
+  }
+
+  .app-panel {
+    padding: 18px;
+
+    border-radius: 22px;
+  }
+
+  .deck {
+    height: 475px;
+  }
+
+  .panel-top {
+    gap: 10px;
+  }
+
+  .panel-subtitle {
+    max-width: 220px;
+  }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-<!-- ==========================================================
+<!-- =========================================================
      HEADER
-     ========================================================== -->
+     ========================================================= -->
 
 <header>
 
   <div class="brand">
 
     <!--
-      ========================================================
-      LOGO PLACEHOLDER
-
-      Replace this:
-
-      <div class="logo-placeholder">AC</div>
-
-      with:
+      If you have a logo, replace the placeholder with:
 
       <img
         src="after-class-logo.png"
         class="logo-image"
         alt="After Class"
       >
-
-      ========================================================
-    -->      
-    <div class="logo-placeholder"></div>
-
-      
-
-      <img
-        src="after-class-logo.png"
-        class="logo-image"
-        alt="After Class"
-      >
+    -->
 
     <div class="logo-placeholder">
-      
+      AC
     </div>
 
     <div class="brand-name">
-      <span></span>
+      After Class
     </div>
 
   </div>
@@ -889,19 +930,18 @@
 </header>
 
 
-
-<!-- ==========================================================
-     MAIN PAGE
-     ========================================================== -->
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
 
 <div class="page">
 
   <div class="content">
 
 
-    <!-- ======================================================
-         LEFT INTRODUCTION
-         ====================================================== -->
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
 
     <section class="intro">
 
@@ -962,10 +1002,9 @@
     </section>
 
 
-
-    <!-- ======================================================
+    <!-- =====================================================
          APP PANEL
-         ====================================================== -->
+         ===================================================== -->
 
     <section class="app-panel">
 
@@ -995,10 +1034,9 @@
       </div>
 
 
-
-      <!-- ====================================================
-           PROFESSOR CARD DECK
-           ==================================================== -->
+      <!-- ===================================================
+           CARD DECK
+           =================================================== -->
 
       <div
         class="deck"
@@ -1006,10 +1044,9 @@
       ></div>
 
 
-
-      <!-- ====================================================
+      <!-- ===================================================
            ACTION BUTTONS
-           ==================================================== -->
+           =================================================== -->
 
       <div class="actions">
 
@@ -1017,6 +1054,7 @@
           class="action pass"
           id="passBtn"
           aria-label="Pass"
+          type="button"
         >
           ✕
         </button>
@@ -1026,6 +1064,7 @@
           class="action like"
           id="likeBtn"
           aria-label="Meet"
+          type="button"
         >
           ♡
         </button>
@@ -1038,10 +1077,9 @@
       </div>
 
 
-
-      <!-- ====================================================
+      <!-- ===================================================
            MATCH SCREEN
-           ==================================================== -->
+           =================================================== -->
 
       <div
         class="match"
@@ -1064,6 +1102,7 @@
         <button
           class="book"
           id="bookBtn"
+          type="button"
         >
           Schedule a meeting
         </button>
@@ -1072,11 +1111,13 @@
         <button
           class="restart"
           id="restartBtn"
+          type="button"
         >
           Start over
         </button>
 
       </div>
+
 
     </section>
 
@@ -1085,288 +1126,127 @@
 </div>
 
 
-
 <script>
 
-
-/* ============================================================
-   PROFESSOR PROFILES
-   ============================================================
-
-   Edit professor information here.
-
-   To add a professor, copy the template at the bottom.
-
-   ============================================================ */
-
+/* =========================================================
+   PROFESSOR DATA
+   ========================================================= */
 
 const professors = [
 
-
-  /* ==========================================================
-     PROFESSOR A
-     ========================================================== */
-
   {
-
     name: "Dr. Kendall Koe",
 
     department: "Computer Science",
 
-    role:
-      "Assistant Professor • AI & Robotics",
+    role: "Assistant Professor • AI & Robotics",
 
     initials: "KK",
 
-
-    /*
-      PROFESSOR PHOTO
-
-      Put the image file in the same folder as this HTML.
-
-      Then uncomment:
-
-      photo: "maya-chen.jpg",
-
-    */
-
-    // photo: "maya-chen.jpg",
-
+    // photo: "kendall-koe.jpg",
 
     bio:
       "Works on intelligent systems, machine learning, and human-centered computing. Loves ambitious student projects.",
 
-
     tags: [
-
       "Machine Learning",
-
       "Computer Vision",
-
       "AI Systems",
-
       "Python"
-
     ],
 
-
     availability:
-      "Check on Calendaly",
-
+      "Check on Calendly",
 
     color:
       "#4b2e83"
-
   },
 
 
-
-  /* ==========================================================
-     PROFESSOR B
-     ========================================================== */
-
   {
-
     name: "Prof. Daniel Park",
 
     department: "Mechanical Engineering",
 
-    role:
-      "Associate Professor • Mechatronics",
+    role: "Associate Professor • Mechatronics",
 
     initials: "DP",
 
-
     // photo: "daniel-park.jpg",
-
 
     bio:
       "Designs robots, mechanisms, and smart machines. Particularly interested in turning prototypes into real hardware.",
 
-
     tags: [
-
       "Mechanisms",
-
       "Mechatronics",
-
       "CAD",
-
       "Control"
-
     ],
-
 
     availability:
       "Tomorrow · 1:00–3:00 PM",
 
-
     color:
       "#5d467d"
-
   },
 
 
-
-  /* ==========================================================
-     PROFESSOR C
-     ========================================================== */
-
   {
-
     name: "Dr. Elena Rossi",
 
     department: "Robotics Engineering",
 
-    role:
-      "Professor • Autonomous Robotics",
+    role: "Professor • Autonomous Robotics",
 
     initials: "ER",
 
-
     // photo: "elena-rossi.jpg",
-
 
     bio:
       "Researches mobile robots, perception, and autonomous navigation. Always open to unusual robot ideas.",
 
-
     tags: [
-
       "Robotics",
-
       "ROS 2",
-
       "SLAM",
-
       "Autonomy"
-
     ],
-
 
     availability:
       "Thursday · 4:00–6:00 PM",
 
-
     color:
       "#39265e"
-
-  },
-
-
-
-  /* ==========================================================
-     EXTRA PROFESSOR TEMPLATE
-
-     Copy this object to add another professor.
-
-  {
-
-    name: "Professor Name",
-
-    department: "Department Name",
-
-    role: "Professor • Specialty",
-
-    initials: "PN",
-
-    // photo: "professor-photo.jpg",
-
-    bio:
-      "Short description of the professor's research and interests.",
-
-    tags: [
-
-      "Research Area",
-
-      "Topic",
-
-      "Skill",
-
-      "Course"
-
-    ],
-
-    availability:
-      "Monday · 2:00–4:00 PM",
-
-    color:
-      "#4b2e83"
-
   }
-
-     ========================================================== */
 
 ];
 
 
-
-/* ============================================================
+/* =========================================================
    CALENDLY LINKS
-   ============================================================
-
-   Put your Calendly links here.
-
-   Example:
-
-   const CALENDLY_LINKS = {
-
-     "Dr. Kendall Koe":
-       "https://calendly.com/15koek/30min?utm_source=chatgpt.com&month=2026-10",
-
-     "Prof. Daniel Park":
-       "https://calendly.com/your-link",
-
-     "Dr. Elena Rossi":
-       "https://calendly.com/your-link"
-
-   };
-
 
    IMPORTANT:
-
-   The website will NOT show a popup.
-
-   When the user clicks "Schedule a meeting",
-   it will navigate directly to the corresponding
-   Calendly URL.
-
-   ============================================================ */
-  const CALENDLY_LINKS = {
-
-     "Dr. Kendall Koe":
-       "https://calendly.com/15koek/30min?utm_source=chatgpt.com&month=2026-10",
-
-     "Prof. Daniel Park":
-       "https://calendly.com/your-link",
-
-     "Dr. Elena Rossi":
-       "https://calendly.com/your-link"
-
-   };
+   Use actual URLs here.
+   ========================================================= */
 
 const CALENDLY_LINKS = {
 
-
   "Dr. Kendall Koe":
-  "https://calendly.com/15koek/30min?utm_source=chatgpt.com&month=2026-10",
+    "https://calendly.com/15koek/30min?utm_source=chatgpt.com&month=2026-10",
+
+  "Prof. Daniel Park":
+    "",
+
+  "Dr. Elena Rossi":
+    ""
+
+};
 
 
-  // "Prof. Daniel Park":
-  //   "PASTE_CALENDLY_LINK_HERE",
-
-
-  // "Dr. Elena Rossi":
-  //   "PASTE_CALENDLY_LINK_HERE"
-
-
-];
-
-
-
-/* ============================================================
+/* =========================================================
    APP STATE
-   ============================================================ */
+   ========================================================= */
 
 let index = 0;
 
@@ -1376,65 +1256,80 @@ let currentX = 0;
 
 let dragging = false;
 
+let activeCard = null;
 
+
+/* =========================================================
+   DOM
+   ========================================================= */
 
 const deck =
   document.getElementById("deck");
 
-
 const match =
   document.getElementById("match");
-
 
 const matchText =
   document.getElementById("matchText");
 
-
 const counter =
   document.getElementById("counter");
 
+const passBtn =
+  document.getElementById("passBtn");
+
+const likeBtn =
+  document.getElementById("likeBtn");
+
+const bookBtn =
+  document.getElementById("bookBtn");
+
+const restartBtn =
+  document.getElementById("restartBtn");
 
 
-/* ============================================================
-   RENDER CARDS
-   ============================================================ */
+/* =========================================================
+   RENDER
+   ========================================================= */
 
 function render() {
-
 
   deck.innerHTML = "";
 
 
+  /* Counter */
+
   counter.textContent =
-
     index < professors.length
-
       ? `${index + 1} / ${professors.length}`
-
       : `${professors.length} / ${professors.length}`;
 
 
+  /* All cards finished */
 
   if (index >= professors.length) {
 
-
     deck.innerHTML = `
 
-      <div style="
-        height:100%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-        color:#777;
-      ">
+      <div
+        style="
+          height:100%;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          color:#777;
+        "
+      >
 
         <div>
 
-          <div style="
-            font-size:42px;
-            margin-bottom:12px;
-          ">
+          <div
+            style="
+              font-size:42px;
+              margin-bottom:12px;
+            "
+          >
             ✓
           </div>
 
@@ -1444,10 +1339,12 @@ function render() {
           </b>
 
 
-          <div style="
-            font-size:13px;
-            margin-top:7px;
-          ">
+          <div
+            style="
+              font-size:13px;
+              margin-top:7px;
+            "
+          >
             Start over to browse again.
           </div>
 
@@ -1457,66 +1354,49 @@ function render() {
 
     `;
 
-
     return;
   }
 
 
-
-  /* ==========================================================
-     NEXT CARD
-     ========================================================== */
+  /* Next card */
 
   if (index + 1 < professors.length) {
 
-
-    const next =
+    const nextCard =
       createCard(
         professors[index + 1],
         true
       );
 
-
-    deck.appendChild(next);
-
+    deck.appendChild(nextCard);
   }
 
 
+  /* Current card */
 
-  /* ==========================================================
-     CURRENT CARD
-     ========================================================== */
-
-  const card =
+  const currentCard =
     createCard(
       professors[index],
       false
     );
 
+  deck.appendChild(currentCard);
 
-  deck.appendChild(card);
 
-
-  attachDrag(card);
-
+  attachDrag(currentCard);
 }
 
 
-
-/* ============================================================
-   CREATE PROFESSOR CARD
-   ============================================================ */
+/* =========================================================
+   CREATE CARD
+   ========================================================= */
 
 function createCard(p, back) {
-
 
   const card =
     document.createElement("div");
 
-
-  card.className =
-    "card";
-
+  card.className = "card";
 
 
   if (back) {
@@ -1532,71 +1412,42 @@ function createCard(p, back) {
   }
 
 
+  /* Photo */
 
-  /* ==========================================================
-     PROFESSOR PHOTO
+  const photoHTML = p.photo
 
-     If "photo" exists, show image.
-
-     Otherwise show initials.
-     ========================================================== */
-
-
-  const photoHTML =
-
-    p.photo
-
-      ? `
-
+    ? `
         <img
-
           src="${p.photo}"
-
           class="professor-photo"
-
           alt="${p.name}"
-
         >
-
       `
 
-      : `
-
+    : `
         <div
-
           class="avatar-placeholder"
-
-          style="
-            background:${p.color}
-          "
-
+          style="background:${p.color}"
         >
-
           ${p.initials}
-
         </div>
-
       `;
 
 
+  /* Card HTML */
 
   card.innerHTML = `
-
 
     <div class="photo">
 
 
       <div class="department">
-
         ${p.department}
-
       </div>
 
 
       <div class="verified">
-
         ✓
-
       </div>
 
 
@@ -1606,62 +1457,46 @@ function createCard(p, back) {
     </div>
 
 
-
     <div class="info">
 
 
       <div class="name-row">
 
-
         <div class="name">
-
           ${p.name}
-
         </div>
-
 
         <div class="faculty">
-
           SFSU Faculty
-
         </div>
 
-
       </div>
-
 
 
       <div class="role">
-
         ${p.role}
-
       </div>
-
 
 
       <div class="bio">
-
         ${p.bio}
-
       </div>
-
 
 
       <div class="tags">
 
-
-        ${p.tags.map(
-
-          tag =>
-            `<span class="tag">
-              ${tag}
-            </span>`
-
-        ).join("")}
-
+        ${p.tags
+          .map(
+            tag => `
+              <span class="tag">
+                ${tag}
+              </span>
+            `
+          )
+          .join("")
+        }
 
       </div>
-
 
 
       <div class="availability">
@@ -1669,9 +1504,7 @@ function createCard(p, back) {
         Office hour:
 
         <b>
-
           ${p.availability}
-
         </b>
 
       </div>
@@ -1680,75 +1513,74 @@ function createCard(p, back) {
     </div>
 
 
-
     <div class="stamp like-stamp">
-
       MEET
-
     </div>
-
 
 
     <div class="stamp nope-stamp">
-
       PASS
-
     </div>
-
 
   `;
 
 
-
   return card;
-
 }
 
 
-
-/* ============================================================
+/* =========================================================
    DRAG / SWIPE
-   ============================================================ */
+   ========================================================= */
 
 function attachDrag(card) {
 
 
+  /* POINTER DOWN */
+
   card.addEventListener(
     "pointerdown",
-    e => {
+    function(e) {
+
+      if (index >= professors.length) {
+        return;
+      }
 
 
       dragging = true;
 
+      activeCard = card;
 
       startX =
         e.clientX;
 
+      currentX = 0;
 
-      currentX =
-        0;
+
+      card.classList.add("dragging");
 
 
       card.setPointerCapture(
         e.pointerId
       );
 
-
-      card.style.transition =
-        "none";
-
     }
   );
 
 
+  /* POINTER MOVE */
 
   card.addEventListener(
     "pointermove",
-    e => {
+    function(e) {
 
-
-      if (!dragging)
+      if (!dragging) {
         return;
+      }
+
+      if (activeCard !== card) {
+        return;
+      }
 
 
       currentX =
@@ -1760,11 +1592,10 @@ function attachDrag(card) {
 
 
       card.style.transform =
-
-        `translateX(${currentX}px)
-         rotate(${rotate}deg)`;
+        `translateX(${currentX}px) rotate(${rotate}deg)`;
 
 
+      /* MEET stamp */
 
       const likeStamp =
         card.querySelector(
@@ -1772,107 +1603,138 @@ function attachDrag(card) {
         );
 
 
+      likeStamp.style.opacity =
+        Math.min(
+          Math.max(
+            currentX / 100,
+            0
+          ),
+          1
+        );
+
+
+      /* PASS stamp */
+
       const nopeStamp =
         card.querySelector(
           ".nope-stamp"
         );
 
 
-
-      likeStamp.style.opacity =
-
-        Math.min(
-
-          Math.max(
-            currentX / 100,
-            0
-          ),
-
-          1
-
-        );
-
-
-
       nopeStamp.style.opacity =
-
         Math.min(
-
           Math.max(
             -currentX / 100,
             0
           ),
-
           1
-
         );
 
     }
   );
 
 
+  /* POINTER UP */
 
   card.addEventListener(
     "pointerup",
-    () => {
+    function() {
 
-
-      if (!dragging)
+      if (!dragging) {
         return;
+      }
+
+      if (activeCard !== card) {
+        return;
+      }
 
 
       dragging = false;
 
+      activeCard = null;
+
+
+      card.classList.remove(
+        "dragging"
+      );
+
 
       card.style.transition =
-
         "transform .28s ease, opacity .28s ease";
 
 
+      /* RIGHT */
 
       if (currentX > 120) {
-
 
         swipe(
           "right",
           card
         );
 
-
+        return;
       }
 
 
-      else if (currentX < -120) {
+      /* LEFT */
 
+      if (currentX < -120) {
 
         swipe(
           "left",
           card
         );
 
-
+        return;
       }
 
 
-      else {
+      /* RETURN TO CENTER */
+
+      card.style.transform =
+        "";
 
 
-        card.style.transform =
-          "";
+      card.querySelector(
+        ".like-stamp"
+      ).style.opacity = 0;
 
 
-        card.querySelector(
-          ".like-stamp"
-        ).style.opacity =
-          0;
+      card.querySelector(
+        ".nope-stamp"
+      ).style.opacity = 0;
+
+    }
+  );
 
 
-        card.querySelector(
-          ".nope-stamp"
-        ).style.opacity =
-          0;
+  /* POINTER CANCEL */
 
+  card.addEventListener(
+    "pointercancel",
+    function() {
+
+      if (!dragging) {
+        return;
       }
+
+
+      dragging = false;
+
+      activeCard = null;
+
+
+      card.classList.remove(
+        "dragging"
+      );
+
+
+      card.style.transition =
+        "transform .28s ease";
+
+
+      card.style.transform =
+        "";
 
     }
   );
@@ -1880,15 +1742,25 @@ function attachDrag(card) {
 }
 
 
-
-/* ============================================================
-   SWIPE ACTION
-   ============================================================ */
+/* =========================================================
+   SWIPE
+   ========================================================= */
 
 function swipe(
   direction,
   card
 ) {
+
+  if (
+    !card ||
+    card.dataset.swiped === "true"
+  ) {
+    return;
+  }
+
+
+  card.dataset.swiped =
+    "true";
 
 
   const professor =
@@ -1896,45 +1768,41 @@ function swipe(
 
 
   const amount =
-
     direction === "right"
+      ? 800
+      : -800;
 
-      ? 700
 
-      : -700;
+  const rotation =
+    direction === "right"
+      ? 25
+      : -25;
 
+
+  card.style.transition =
+    "transform .28s ease, opacity .28s ease";
 
 
   card.style.transform =
-
-    `translateX(${amount}px)
-     rotate(${direction === "right"
-       ? 25
-       : -25}deg)`;
+    `translateX(${amount}px) rotate(${rotation}deg)`;
 
 
   card.style.opacity =
     "0";
 
 
-
   setTimeout(
-    () => {
+    function() {
 
-
-      if (direction === "right") {
-
+      if (
+        direction === "right"
+      ) {
 
         showMatch(
           professor
         );
 
-
-      }
-
-
-      else {
-
+      } else {
 
         index++;
 
@@ -1942,23 +1810,18 @@ function swipe(
 
       }
 
-
     },
-
-    260
-
+    280
   );
 
 }
 
 
-
-/* ============================================================
+/* =========================================================
    MATCH SCREEN
-   ============================================================ */
+   ========================================================= */
 
 function showMatch(p) {
-
 
   matchText.innerHTML = `
 
@@ -1977,7 +1840,8 @@ function showMatch(p) {
 
     ${p.tags
       .slice(0, 2)
-      .join(" · ")}
+      .join(" · ")
+    }
 
     <br>
 
@@ -1992,147 +1856,108 @@ function showMatch(p) {
   );
 
 
+  /* Calendly */
 
-  /* ==========================================================
-     CALENDLY NAVIGATION
+  bookBtn.onclick =
+    function() {
 
-     No popup.
-
-     The button redirects directly to Calendly.
-
-     ========================================================== */
+      const calendlyURL =
+        CALENDLY_LINKS[p.name];
 
 
-  document.getElementById(
-    "bookBtn"
-  ).onclick = () => {
+      if (calendlyURL) {
+
+        window.location.href =
+          calendlyURL;
+
+      } else {
+
+        alert(
+          `No Calendly link has been configured for ${p.name} yet.`
+        );
+
+      }
+
+    };
+
+}
 
 
-    const calendlyURL =
-      CALENDLY_LINKS[p.name];
+/* =========================================================
+   PASS BUTTON
+   ========================================================= */
+
+passBtn.onclick =
+  function() {
+
+    const card =
+      deck.querySelector(
+        ".card:not([data-swipe-complete])"
+      );
 
 
+    if (card) {
 
-    if (calendlyURL) {
-
-
-      window.location.href =
-        calendlyURL;
-
-
-    }
-
-
-    else {
-
-
-      /*
-        No Calendly URL has been added yet.
-
-        Open browser console to see this message.
-
-        Once you insert the link above,
-        this branch will never be used.
-      */
-
-
-      console.log(
-
-        `No Calendly link configured for ${p.name}.`
-
+      swipe(
+        "left",
+        card
       );
 
     }
 
   };
 
-}
+
+/* =========================================================
+   MEET BUTTON
+   ========================================================= */
+
+likeBtn.onclick =
+  function() {
+
+    const card =
+      deck.querySelector(
+        ".card:not([data-swipe-complete])"
+      );
 
 
+    if (card) {
 
-/* ============================================================
-   PASS BUTTON
-   ============================================================ */
+      swipe(
+        "right",
+        card
+      );
 
-document.getElementById(
-  "passBtn"
-).onclick = () => {
+    }
 
-
-  const card =
-    deck.querySelector(
-      ".card:last-child"
-    );
+  };
 
 
-  if (card) {
-
-    swipe(
-      "left",
-      card
-    );
-
-  }
-
-};
-
-
-
-/* ============================================================
-   LIKE / MEET BUTTON
-   ============================================================ */
-
-document.getElementById(
-  "likeBtn"
-).onclick = () => {
-
-
-  const card =
-    deck.querySelector(
-      ".card:last-child"
-    );
-
-
-  if (card) {
-
-    swipe(
-      "right",
-      card
-    );
-
-  }
-
-};
-
-
-
-/* ============================================================
+/* =========================================================
    RESTART
-   ============================================================ */
+   ========================================================= */
 
-document.getElementById(
-  "restartBtn"
-).onclick = () => {
+restartBtn.onclick =
+  function() {
 
+    index = 0;
 
-  index =
-    0;
+    dragging = false;
 
+    activeCard = null;
 
-  match.classList.remove(
-    "show"
-  );
+    match.classList.remove(
+      "show"
+    );
 
+    render();
 
-  render();
-
-};
-
+  };
 
 
-/* ============================================================
+/* =========================================================
    INITIALIZE
-   ============================================================ */
+   ========================================================= */
 
 render();
 
