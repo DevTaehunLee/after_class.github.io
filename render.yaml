@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: after-class-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: AI_PROVIDER
+        value: openai
+      - key: OPENAI_MODEL
+        value: gpt-5-mini
+      - key: openai_key
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://afterclass.github.io,https://devtaehunlee.github.io
+      - key: NODE_VERSION
+        value: 22
