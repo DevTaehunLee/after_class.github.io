@@ -1,577 +1,110 @@
+from pathlib import Path
 
-html = r'''<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>After Class</title>
-  <style>
-    * { box-sizing: border-box; }
+src = Path("/mnt/data/after_class_web.html")
+html = src.read_text(encoding="utf-8")
+
+# Global typography defaults
+html = html.replace(
+    """* { box-sizing: border-box; }
+
+    :root {""",
+    """* {
+      box-sizing: border-box;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    html {
+      font-size: 12pt;
+    }
+
     body {
-      margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f7f5f2;
-      color: #1e1e1e;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
+      font-size: 12pt;
+      text-align: justify;
     }
 
-    .app {
-      width: 100%;
-      max-width: 430px;
-      min-height: 100vh;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
+    :root {"""
+)
 
-    header {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 22px;
-      border-bottom: 1px solid #eee;
-      background: rgba(255,255,255,.94);
-      position: relative;
-      z-index: 10;
-    }
+# The existing body declaration already sets font-family and should defer to the global rule.
+html = html.replace(
+    """font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      color:""",
+    """color:"""
+)
 
-    .logo {
-      font-size: 27px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-    }
+# Keep deliberate centered UI text centered.
+for selector in [".intro", ".panel-top", ".match", ".hint"]:
+    # Add text-align only where needed without changing existing layout declarations.
+    pass
 
-    .logo span { font-weight: 400; }
-
-    .profile-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid #ddd;
-      background: #f3f3f3;
-      font-size: 16px;
-    }
-
-    main {
-      padding: 20px 18px 28px;
-    }
-
-    .eyebrow {
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: #999;
-      font-weight: 700;
-      margin-top: 4px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 27px;
-      margin: 7px 0 4px;
-      letter-spacing: -1px;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-      margin: 0 0 18px;
-    }
-
-    .deck {
-      position: relative;
-      height: 505px;
-      perspective: 1000px;
-    }
-
-    .card {
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 14px 40px rgba(0,0,0,.12);
-      border: 1px solid #eee;
-      touch-action: none;
-      user-select: none;
-      cursor: grab;
-      transition: transform .28s ease, opacity .28s ease;
-    }
-
-    .card:active { cursor: grabbing; }
-
-    .photo {
-      height: 245px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background: linear-gradient(145deg, #dcd7d0, #f1eee9);
-    }
-
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      font-weight: 800;
+# Explicitly preserve intended UI alignments
+html = html.replace(
+    """.intro {
       color: white;
-      background: #333;
-      box-shadow: 0 8px 22px rgba(0,0,0,.15);
-    }
-
-    .department {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: rgba(255,255,255,.9);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .2px;
-    }
-
-    .verified {
-      position: absolute;
-      right: 16px;
-      top: 16px;
-      background: #fff;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-    }
-
-    .info {
-      padding: 19px 20px;
-    }
-
-    .name-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .name {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .age {
-      color: #999;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .role {
-      margin-top: 3px;
-      font-size: 13px;
-      color: #666;
-      font-weight: 600;
-    }
-
-    .bio {
-      margin: 12px 0;
-      line-height: 1.45;
-      font-size: 13px;
-      color: #4c4c4c;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .tag {
-      background: #f2f2f2;
-      padding: 6px 9px;
-      border-radius: 8px;
-      font-size: 11px;
-      color: #555;
-      font-weight: 600;
-    }
-
-    .availability {
-      margin-top: 13px;
-      font-size: 12px;
-      color: #777;
-    }
-
-    .availability b { color: #222; }
-
-    .stamp {
-      position: absolute;
-      top: 28px;
-      padding: 7px 12px;
-      border: 3px solid;
-      border-radius: 9px;
-      font-weight: 900;
-      font-size: 19px;
-      letter-spacing: 1px;
-      opacity: 0;
-      transform: rotate(-12deg);
-      pointer-events: none;
-    }
-
-    .like-stamp {
-      right: 20px;
-      color: #222;
-      border-color: #222;
-      transform: rotate(12deg);
-    }
-
-    .nope-stamp {
-      left: 20px;
-      color: #777;
-      border-color: #777;
-    }
-
-    .actions {
-      height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 4px;
-    }
-
-    .action {
-      border-radius: 50%;
-      background: #fff;
-      border: 1px solid #e4e4e4;
-      box-shadow: 0 5px 18px rgba(0,0,0,.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform .15s ease;
-    }
-
-    .action:hover { transform: scale(1.08); }
-
-    .pass {
-      width: 55px;
-      height: 55px;
-      font-size: 23px;
-      color: #555;
-    }
-
-    .like {
-      width: 66px;
-      height: 66px;
-      font-size: 27px;
-      color: #111;
-      border: 2px solid #222;
-    }
-
-    .hint {
-      text-align: center;
-      color: #aaa;
-      font-size: 11px;
-      margin-top: -2px;
-    }
-
-    .match {
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,.97);
-      z-index: 50;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .match.show { display: flex; }
-
-    .match-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: #222;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-
-    .match h2 {
-      font-size: 31px;
-      margin: 0 0 8px;
-      letter-spacing: -1px;
-    }
-
-    .match p {
-      max-width: 300px;
-      color: #666;
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .book {
-      margin-top: 16px;
-      border: none;
-      background: #222;
+      padding: 20px 0;
+    }""",
+    """.intro {
       color: white;
-      border-radius: 999px;
-      padding: 13px 24px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+      padding: 20px 0;
+      text-align: left;
+    }"""
+)
 
-    .restart {
-      margin-top: 10px;
-      border: none;
-      background: transparent;
-      color: #777;
-      cursor: pointer;
-    }
+html = html.replace(
+    """.match {
+      position: absolute;""",
+    """.match {
+      text-align: center;
+      position: absolute;"""
+)
 
-    @media (min-width: 700px) {
-      body { align-items: center; padding: 25px 0; }
-      .app {
-        min-height: 850px;
-        height: 850px;
-        border-radius: 28px;
-        box-shadow: 0 20px 70px rgba(0,0,0,.12);
+# Avoid inherited justify on compact card UI and labels.
+html = html.replace(
+    """.card {
+      position: absolute;""",
+    """.card {
+      text-align: left;
+      position: absolute;"""
+)
+
+html = html.replace(
+    """.panel-top {
+      display: flex;""",
+    """.panel-top {
+      text-align: left;
+      display: flex;"""
+)
+
+html = html.replace(
+    """.hint {
+      text-align: center;""",
+    """.hint {
+      text-align: center;"""
+)
+
+# The mobile intro remains centered as intended.
+html = html.replace(
+    """@media (max-width: 900px) {
+      .content {
+        grid-template-columns: 1fr;
+        max-width: 700px;
       }
-    }
-  </style>
-</head>
-<body>
-<div class="app">
-  <header>
-    <div class="logo">after<span>class</span></div>
-    <button class="profile-btn">◎</button>
-  </header>
 
-  <main>
-    <div class="eyebrow">SFSU • Office Hours</div>
-    <h1>Who do you want to see?</h1>
-    <p class="subtitle">Swipe right to meet. Swipe left to pass.</p>
+      .intro {
+        text-align: center;
+      }""",
+    """@media (max-width: 900px) {
+      .content {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+      }
 
-    <div class="deck" id="deck"></div>
+      .intro {
+        text-align: center;
+      }"""
+)
 
-    <div class="actions">
-      <button class="action pass" id="passBtn">✕</button>
-      <button class="action like" id="likeBtn">♡</button>
-    </div>
-
-    <div class="hint">You can also drag the card left or right.</div>
-  </main>
-
-  <div class="match" id="match">
-    <div class="match-circle">♥</div>
-    <h2>It's a match.</h2>
-    <p id="matchText"></p>
-    <button class="book" id="bookBtn">View Office Hours</button>
-    <button class="restart" id="restartBtn">Start over</button>
-  </div>
-</div>
-
-<script>
-const professors = [
-  {
-    name: "Dr. Maya Chen",
-    department: "Computer Science",
-    role: "Assistant Professor • AI & Systems",
-    initials: "MC",
-    bio: "Works on intelligent systems, machine learning, and human-centered computing. Loves ambitious student projects.",
-    tags: ["Machine Learning", "Computer Vision", "AI Systems", "Python"],
-    availability: "Today · 3:00–5:00 PM",
-    color: "#3b3b3b"
-  },
-  {
-    name: "Prof. Daniel Park",
-    department: "Mechanical Engineering",
-    role: "Associate Professor • Mechatronics",
-    initials: "DP",
-    bio: "Designs robots, mechanisms, and smart machines. Particularly interested in turning prototypes into real hardware.",
-    tags: ["Mechanisms", "Mechatronics", "CAD", "Control"],
-    availability: "Tomorrow · 1:00–3:00 PM",
-    color: "#55504b"
-  },
-  {
-    name: "Dr. Elena Rossi",
-    department: "Robotics Engineering",
-    role: "Professor • Autonomous Robotics",
-    initials: "ER",
-    bio: "Researches mobile robots, perception, and autonomous navigation. Always open to hearing about unusual robot ideas.",
-    tags: ["Robotics", "ROS 2", "SLAM", "Autonomy"],
-    availability: "Thu · 4:00–6:00 PM",
-    color: "#454545"
-  }
-];
-
-let index = 0;
-let startX = 0;
-let currentX = 0;
-let dragging = false;
-
-const deck = document.getElementById("deck");
-const match = document.getElementById("match");
-const matchText = document.getElementById("matchText");
-
-function render() {
-  deck.innerHTML = "";
-  if (index >= professors.length) {
-    deck.innerHTML = `
-      <div style="height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:#777;">
-        <div>
-          <div style="font-size:42px;margin-bottom:12px;">✓</div>
-          <b>That's everyone for now.</b>
-          <div style="font-size:13px;margin-top:7px;">Start over to browse again.</div>
-        </div>
-      </div>`;
-    return;
-  }
-
-  // Show current card plus the next card underneath.
-  if (index + 1 < professors.length) {
-    const next = createCard(professors[index + 1], true);
-    deck.appendChild(next);
-  }
-
-  const card = createCard(professors[index], false);
-  deck.appendChild(card);
-  attachDrag(card);
-}
-
-function createCard(p, back) {
-  const card = document.createElement("div");
-  card.className = "card";
-  if (back) {
-    card.style.transform = "scale(.96) translateY(10px)";
-    card.style.opacity = ".75";
-    card.style.pointerEvents = "none";
-  }
-
-  card.innerHTML = `
-    <div class="photo">
-      <div class="department">${p.department}</div>
-      <div class="verified">✓</div>
-      <div class="avatar" style="background:${p.color}">${p.initials}</div>
-    </div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">${p.name}</div>
-        <div class="age">SFSU Faculty</div>
-      </div>
-      <div class="role">${p.role}</div>
-      <div class="bio">${p.bio}</div>
-      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
-      <div class="availability">Office hour: <b>${p.availability}</b></div>
-    </div>
-    <div class="stamp like-stamp">MEET</div>
-    <div class="stamp nope-stamp">PASS</div>
-  `;
-  return card;
-}
-
-function attachDrag(card) {
-  card.addEventListener("pointerdown", e => {
-    dragging = true;
-    startX = e.clientX;
-    currentX = 0;
-    card.setPointerCapture(e.pointerId);
-    card.style.transition = "none";
-  });
-
-  card.addEventListener("pointermove", e => {
-    if (!dragging) return;
-    currentX = e.clientX - startX;
-    const rotate = currentX * 0.055;
-    card.style.transform = `translateX(${currentX}px) rotate(${rotate}deg)`;
-
-    const likeStamp = card.querySelector(".like-stamp");
-    const nopeStamp = card.querySelector(".nope-stamp");
-    likeStamp.style.opacity = Math.min(Math.max(currentX / 100, 0), 1);
-    nopeStamp.style.opacity = Math.min(Math.max(-currentX / 100, 0), 1);
-  });
-
-  card.addEventListener("pointerup", () => {
-    if (!dragging) return;
-    dragging = false;
-    card.style.transition = "transform .28s ease, opacity .28s ease";
-
-    if (currentX > 120) swipe("right", card);
-    else if (currentX < -120) swipe("left", card);
-    else {
-      card.style.transform = "";
-      card.querySelector(".like-stamp").style.opacity = 0;
-      card.querySelector(".nope-stamp").style.opacity = 0;
-    }
-  });
-}
-
-function swipe(direction, card) {
-  const p = professors[index];
-  const amount = direction === "right" ? 600 : -600;
-  card.style.transform = `translateX(${amount}px) rotate(${direction === "right" ? 25 : -25}deg)`;
-  card.style.opacity = "0";
-
-  setTimeout(() => {
-    if (direction === "right") {
-      showMatch(p);
-    } else {
-      index++;
-      render();
-    }
-  }, 260);
-}
-
-function showMatch(p) {
-  matchText.innerHTML = `<b>${p.name}</b> is a great match for your interests.<br><br>
-  ${p.department} · ${p.tags.slice(0,2).join(" · ")}<br>
-  Office hour: ${p.availability}`;
-  match.classList.add("show");
-
-  document.getElementById("bookBtn").onclick = () => {
-    alert(`Office hour selected with ${p.name}.\\n\\n${p.availability}`);
-  };
-}
-
-document.getElementById("passBtn").onclick = () => {
-  const card = deck.querySelector(".card:last-child");
-  if (card) swipe("left", card);
-};
-
-document.getElementById("likeBtn").onclick = () => {
-  const card = deck.querySelector(".card:last-child");
-  if (card) swipe("right", card);
-};
-
-document.getElementById("restartBtn").onclick = () => {
-  index = 0;
-  match.classList.remove("show");
-  render();
-};
-
-render();
-</script>
-</body>
-</html>
-'''
-
-path = Path("/mnt/data/after_class.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created: {path}")
+out = Path("/mnt/data/after_class_web_times_new_roman.html")
+out.write_text(html, encoding="utf-8")
+print(f"Created: {out}")
