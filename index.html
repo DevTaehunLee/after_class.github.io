@@ -1751,7 +1751,7 @@ document.getElementById("aiMatchButton").addEventListener("click", async () => {
     }
     if (!data.matches?.length) results.textContent = "No suggestions were returned. Try describing your topic another way.";
   } catch (error) {
-    results.textContent = "AI suggestions are unavailable right now. Please try again shortly.";
+    results.textContent = `AI 요청 실패: ${error.message || error}`;
     console.error("AI faculty matching failed:", error);
   } finally {
     button.disabled = false;
