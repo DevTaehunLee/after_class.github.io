@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,6 +127,8 @@ header {
       var(--coral),
       var(--purple)
     );
+
+  cursor: pointer;
 }
 
 .logo-image {
@@ -135,6 +138,8 @@ header {
   object-fit: contain;
 
   display: block;
+
+  cursor: pointer;
 }
 
 
@@ -185,6 +190,12 @@ header {
   font-weight: 700;
 
   letter-spacing: 0.5px;
+
+  cursor: pointer;
+}
+
+.sfsu-label:hover {
+  text-decoration: underline;
 }
 
 
@@ -990,7 +1001,11 @@ header {
          after-class-logo.png
          ===================================================== -->
 
-    <div class="logo-wrapper">
+    <div
+      class="logo-wrapper"
+      id="logoButton"
+      title="Refresh page"
+    >
 
       <img
         src="after-class-logo.png"
@@ -1019,7 +1034,11 @@ header {
   </div>
 
 
-  <div class="sfsu-label">
+  <div
+    class="sfsu-label"
+    id="sfsuFacultyLink"
+    title="SFSU Faculty A-Z"
+  >
     SAN FRANCISCO STATE UNIVERSITY
   </div>
 
@@ -1264,14 +1283,14 @@ const professors = [
 
     department: "Mechanical Engineering",
 
-    role: "Faculty • Mechanical Engineering",
+    role: "Associate Professor • Engineering",
 
     initials: "DQ",
 
     photo: "david.png",
 
     bio:
-      "Works in mechanical engineering and engineering design, with interests connecting physical systems, machines, and applied engineering.",
+      "Faculty member in engineering working with students on mechanical engineering, engineering design, and applied technical problems.",
 
     tags: [
       "Mechanical Engineering",
@@ -1475,6 +1494,37 @@ const bookBtn =
 
 const restartBtn =
   document.getElementById("restartBtn");
+
+const logoButton =
+  document.getElementById("logoButton");
+
+const sfsuFacultyLink =
+  document.getElementById("sfsuFacultyLink");
+
+
+/* =========================================================
+   LOGO → REFRESH PAGE
+   ========================================================= */
+
+logoButton.onclick =
+  function() {
+
+    window.location.reload();
+
+  };
+
+
+/* =========================================================
+   SFSU LABEL → FACULTY A-Z
+   ========================================================= */
+
+sfsuFacultyLink.onclick =
+  function() {
+
+    window.location.href =
+      "https://faculty.sfsu.edu/atoz";
+
+  };
 
 
 /* =========================================================
@@ -2088,7 +2138,12 @@ likeBtn.onclick =
 restartBtn.onclick =
   function() {
 
-    index = 0;
+    /*
+      Do NOT reset index to 0.
+
+      This returns to the professor
+      that was just being viewed.
+    */
 
     dragging = false;
 
