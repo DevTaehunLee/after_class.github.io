@@ -23,385 +23,133 @@ html {
 
 :root {
   --purple: #6a2c91;
-  --purple-dark: #40165f;
-  --purple-light: #f0e5f7;
-
-  --coral: #ee5a4f;
-  --coral-dark: #d94342;
-  --coral-light: #fff0ed;
-
-  --pink: #d94f8a;
-
-  --ink: #211b2d;
-  --muted: #756d80;
-  --line: #e8e3ed;
-
-  --white: #ffffff;
+  --dark-purple: #4e1d70;
+  --light-purple: #eee4f5;
+  --pink: #e91e63;
+  --green: #278a55;
+  --red: #d94a4a;
+  --black: #111;
+  --gray: #666;
+  --light-gray: #f5f5f5;
+  --border: #dedede;
+  --white: #fff;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
-
-  font-size: 12pt;
-  text-align: justify;
-
-  color: var(--ink);
-
-  background:
-    radial-gradient(
-      circle at 8% 8%,
-      rgba(255, 121, 94, 0.85) 0,
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 88% 92%,
-      rgba(146, 63, 177, 0.75) 0,
-      transparent 38%
-    ),
-    linear-gradient(
-      135deg,
-      #d94743 0%,
-      #e85b68 32%,
-      #c34b91 62%,
-      #673092 100%
-    );
-
-  background-attachment: fixed;
+  background: #fafafa;
+  color: var(--black);
+  overflow-x: hidden;
 }
-
 
 /* =========================================================
    HEADER
    ========================================================= */
 
 header {
-  height: 82px;
-
-  background: rgba(255, 255, 255, 0.97);
-
-  border-bottom:
-    1px solid rgba(255, 255, 255, 0.3);
+  height: 74px;
+  background: white;
+  border-bottom: 1px solid #ddd;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
-  padding: 0 42px;
+  padding: 0 34px;
+
+  position: relative;
+  z-index: 20;
 }
 
-.brand {
+.logo {
   display: flex;
-
   align-items: center;
-
   gap: 13px;
-}
-
-
-/* =========================================================
-   LOGO
-   ========================================================= */
-
-.logo-wrapper {
-  width: 46px;
-  height: 46px;
-
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  flex-shrink: 0;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--coral),
-      var(--purple)
-    );
 
   cursor: pointer;
+  user-select: none;
 }
 
-.logo-image {
-  width: 46px;
-  height: 46px;
-
-  object-fit: contain;
-
-  display: block;
-
-  cursor: pointer;
-}
-
-
-/*
-   If the logo cannot be loaded,
-   show AC instead.
-*/
-
-.logo-fallback {
-  display: none;
-
-  width: 46px;
-  height: 46px;
-
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-
-  font-weight: 900;
-
-  font-size: 17px;
-}
-
-
-/* =========================================================
-   BRAND NAME
-   ========================================================= */
-
-.brand-name {
-  font-size: 25px;
-
-  font-weight: 800;
-
-  letter-spacing: -1.2px;
-}
-
-
-/* =========================================================
-   SFSU LABEL
-   ========================================================= */
-
-.sfsu-label {
-  color: var(--purple);
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 0.5px;
-
-  cursor: pointer;
-}
-
-.sfsu-label:hover {
-  text-decoration: underline;
-}
-
-
-/* =========================================================
-   MAIN PAGE
-   ========================================================= */
-
-.page {
-  min-height: calc(100vh - 82px);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 48px 40px 60px;
-}
-
-.content {
-  width: 100%;
-
-  max-width: 1180px;
-
-  display: grid;
-
-  grid-template-columns: 330px 1fr;
-
-  gap: 55px;
-
-  align-items: center;
-}
-
-
-/* =========================================================
-   LEFT INTRO
-   ========================================================= */
-
-.intro {
-  color: white;
-
-  padding: 20px 0;
-
-  text-align: left;
-}
-
-.eyebrow {
-  display: inline-block;
-
-  padding: 7px 12px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.35);
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, 0.12);
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: 1.5px;
-
-  text-transform: uppercase;
-
-  margin-bottom: 20px;
-
-  backdrop-filter: blur(5px);
-}
-
-.intro h1 {
-  font-size: 52px;
-
-  line-height: 0.98;
-
-  letter-spacing: -3px;
-
-  margin: 0 0 20px;
-}
-
-.intro h1 span {
-  opacity: 0.72;
-
-  font-weight: 400;
-}
-
-.intro p {
-  max-width: 300px;
-
-  font-size: 16px;
-
-  line-height: 1.65;
-
-  color:
-    rgba(255, 255, 255, 0.84);
-
-  margin: 0;
-}
-
-.how {
-  margin-top: 35px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 12px;
-}
-
-.how-row {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  font-size: 13px;
-
-  color:
-    rgba(255, 255, 255, 0.9);
-}
-
-.how-number {
-  width: 27px;
-  height: 27px;
-
-  flex-shrink: 0;
+.logo-mark {
+  width: 42px;
+  height: 42px;
 
   border-radius: 50%;
 
-  background:
-    rgba(255, 255, 255, 0.16);
+  background: var(--purple);
+  color: white;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: bold;
 }
 
+.logo-text {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: -0.3px;
+}
+
+.logo-sub {
+  color: #777;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+.sfsu-link {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--purple);
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.sfsu-link:hover {
+  text-decoration: underline;
+}
 
 /* =========================================================
-   APP PANEL
+   MAIN
    ========================================================= */
 
-.app-panel {
-  position: relative;
-
-  background:
-    rgba(255, 255, 255, 0.98);
-
-  border-radius: 30px;
-
-  padding: 28px;
-
-  box-shadow:
-    0 28px 70px rgba(54, 15, 63, 0.34);
-
-  min-height: 700px;
-}
-
-.panel-top {
-  text-align: left;
+main {
+  min-height: calc(100vh - 74px);
 
   display: flex;
-
-  justify-content: space-between;
-
+  flex-direction: column;
   align-items: center;
 
-  margin-bottom: 20px;
+  padding-top: 28px;
 }
 
-.panel-title {
-  font-size: 18px;
+/* =========================================================
+   TOP AREA
+   ========================================================= */
 
-  font-weight: 800;
+.top-line {
+  width: min(420px, calc(100vw - 40px));
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 12px;
 }
 
-.panel-subtitle {
-  color: var(--muted);
-
-  font-size: 12px;
-
-  margin-top: 3px;
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
 }
 
-.profile-counter {
-  background:
-    var(--purple-light);
-
-  color:
-    var(--purple);
-
-  padding: 7px 11px;
-
-  border-radius: 999px;
-
-  font-size: 11px;
-
-  font-weight: 800;
+.counter {
+  font-size: 13px;
+  color: #777;
 }
-
 
 /* =========================================================
    CARD DECK
@@ -410,831 +158,574 @@ header {
 .deck {
   position: relative;
 
-  height: 485px;
-
-  max-width: 640px;
-
-  margin: 0 auto;
-
-  perspective: 1200px;
-
-  touch-action: none;
+  width: min(420px, calc(100vw - 40px));
+  height: 590px;
 }
-
-
-/* =========================================================
-   CARD
-   ========================================================= */
 
 .card {
   position: absolute;
 
-  inset: 0;
-
-  border-radius: 23px;
-
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
 
   background: white;
 
-  border:
-    1px solid var(--line);
+  border: 1px solid #ddd;
+  border-radius: 18px;
 
   box-shadow:
-    0 14px 35px rgba(43, 30, 55, 0.13);
+    0 10px 30px rgba(0,0,0,0.08);
+
+  overflow: hidden;
 
   user-select: none;
+  touch-action: none;
 
   cursor: grab;
 
-  touch-action: none;
-
   transition:
-    transform 0.28s ease,
-    opacity 0.28s ease;
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
-.card.dragging {
+.card:active {
   cursor: grabbing;
-
-  transition: none;
 }
 
+.card.next-preview {
+  transform: scale(0.96) translateY(10px);
+  opacity: 0.35;
+  z-index: 1;
+}
+
+.card.current {
+  z-index: 5;
+}
 
 /* =========================================================
    PHOTO
    ========================================================= */
 
-.photo {
-  height: 225px;
+.photo-container {
+  height: 310px;
+  width: 100%;
+
+  background: #eee;
 
   position: relative;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f1dce8,
-      #d7c0e2
-    );
+  overflow: hidden;
 }
 
-.avatar-placeholder {
-  width: 125px;
-  height: 125px;
-
-  border-radius: 50%;
-
-  color: white;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 34px;
-
-  font-weight: 800;
-
-  box-shadow:
-    0 12px 28px rgba(106, 44, 145, 0.25);
-}
-
-.professor-photo {
-  width: 125px;
-  height: 125px;
-
-  border-radius: 50%;
+.photo {
+  width: 100%;
+  height: 100%;
 
   object-fit: cover;
 
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
 }
-
-.department {
-  position: absolute;
-
-  left: 15px;
-
-  top: 15px;
-
-  padding: 7px 11px;
-
-  background:
-    rgba(255, 255, 255, 0.94);
-
-  color:
-    var(--purple);
-
-  border-radius: 999px;
-
-  font-size: 10px;
-
-  font-weight: 800;
-}
-
-.verified {
-  position: absolute;
-
-  right: 15px;
-
-  top: 15px;
-
-  width: 31px;
-  height: 31px;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--coral),
-      var(--purple)
-    );
-
-  color: white;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 12px;
-
-  font-weight: 900;
-}
-
 
 /* =========================================================
-   INFORMATION
-   ========================================================= */
-
-.info {
-  padding: 17px 20px;
-}
-
-.name-row {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: baseline;
-
-  gap: 15px;
-}
-
-.name {
-  font-size: 23px;
-
-  font-weight: 800;
-
-  letter-spacing: -0.8px;
-}
-
-.faculty {
-  color: #aaa;
-
-  font-size: 11px;
-
-  white-space: nowrap;
-}
-
-.role {
-  color:
-    var(--purple);
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  margin-top: 3px;
-}
-
-.bio {
-  color: #5f5865;
-
-  font-size: 12px;
-
-  line-height: 1.45;
-
-  margin: 10px 0;
-}
-
-.tags {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 5px;
-}
-
-.tag {
-  background: #f5eef7;
-
-  color: #66566d;
-
-  border-radius: 7px;
-
-  padding: 5px 8px;
-
-  font-size: 10px;
-
-  font-weight: 700;
-}
-
-.availability {
-  margin-top: 10px;
-
-  color: #777;
-
-  font-size: 11px;
-}
-
-.availability b {
-  color: #2d2633;
-}
-
-
-/* =========================================================
-   SWIPE STAMPS
+   STAMPS
    ========================================================= */
 
 .stamp {
   position: absolute;
 
-  top: 25px;
+  top: 28px;
 
-  padding: 7px 12px;
+  padding: 8px 16px;
 
-  border: 3px solid;
+  border: 4px solid;
 
-  border-radius: 9px;
+  border-radius: 8px;
 
-  font-weight: 900;
-
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
 
   letter-spacing: 1px;
 
   opacity: 0;
 
-  pointer-events: none;
-
   z-index: 10;
+
+  pointer-events: none;
 }
 
-.like-stamp {
-  right: 20px;
+.stamp.next {
+  right: 24px;
+  color: var(--green);
+  border-color: var(--green);
 
-  color: var(--coral);
-
-  border-color: var(--coral);
-
-  transform: rotate(12deg);
+  transform: rotate(10deg);
 }
 
-.nope-stamp {
-  left: 20px;
+.stamp.previous {
+  left: 24px;
+  color: var(--red);
+  border-color: var(--red);
 
-  color: var(--purple);
-
-  border-color: var(--purple);
-
-  transform: rotate(-12deg);
+  transform: rotate(-10deg);
 }
-
 
 /* =========================================================
-   ACTION BUTTONS
+   CARD CONTENT
+   ========================================================= */
+
+.card-content {
+  padding: 23px 25px;
+}
+
+.department {
+  color: var(--purple);
+
+  font-size: 13px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+
+  margin-bottom: 7px;
+}
+
+.name {
+  font-size: 29px;
+  line-height: 1.05;
+
+  font-weight: bold;
+
+  margin-bottom: 6px;
+}
+
+.role {
+  color: #555;
+
+  font-size: 15px;
+
+  margin-bottom: 17px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin-bottom: 17px;
+}
+
+.tag {
+  background: var(--light-purple);
+  color: var(--dark-purple);
+
+  padding: 5px 9px;
+
+  border-radius: 14px;
+
+  font-size: 12px;
+}
+
+.availability {
+  font-size: 14px;
+  color: #555;
+
+  line-height: 1.4;
+}
+
+.availability a {
+  color: var(--purple);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.availability a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   BUTTONS
    ========================================================= */
 
 .actions {
+  width: min(420px, calc(100vw - 40px));
+
   display: flex;
-
-  align-items: center;
-
   justify-content: center;
+  align-items: center;
+  gap: 28px;
 
-  gap: 18px;
-
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
-.action {
+.action-btn {
+  width: 62px;
+  height: 62px;
+
   border-radius: 50%;
+
+  border: 1px solid #ddd;
 
   background: white;
 
-  border:
-    1px solid var(--line);
-
-  box-shadow:
-    0 5px 18px rgba(40, 20, 60, 0.08);
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
-  cursor: pointer;
-
-  transition: 0.15s ease;
-}
-
-.action:hover {
-  transform: scale(1.07);
-}
-
-.pass {
-  width: 54px;
-  height: 54px;
-
-  color: #777;
-
-  font-size: 22px;
-}
-
-.like {
-  width: 64px;
-  height: 64px;
-
-  color: var(--coral);
 
   font-size: 27px;
 
-  border:
-    2px solid var(--coral);
+  cursor: pointer;
 
   box-shadow:
-    0 7px 22px rgba(238, 90, 79, 0.18);
+    0 5px 15px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.hint {
-  text-align: center;
+.action-btn:hover {
+  transform: translateY(-2px);
 
-  color: #aaa;
-
-  font-size: 10px;
-
-  margin-top: 10px;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.12);
 }
 
+.action-btn:active {
+  transform: scale(0.94);
+}
+
+.pass {
+  color: var(--red);
+}
+
+.like {
+  color: var(--green);
+}
 
 /* =========================================================
    MATCH SCREEN
    ========================================================= */
 
-.match {
-  position: absolute;
+.match-screen {
+  position: fixed;
 
   inset: 0;
 
-  background:
-    rgba(255, 255, 255, 0.985);
+  background: rgba(250,250,250,0.98);
 
-  z-index: 50;
+  z-index: 100;
 
   display: none;
 
   align-items: center;
-
   justify-content: center;
 
-  flex-direction: column;
-
-  text-align: center;
-
-  border-radius: 30px;
-
-  padding: 40px;
+  padding: 25px;
 }
 
-.match.show {
+.match-screen.visible {
   display: flex;
 }
 
-.match-circle {
-  width: 92px;
-  height: 92px;
+.match-box {
+  width: min(460px, 100%);
 
-  border-radius: 50%;
+  background: white;
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--coral),
-      var(--purple)
-    );
-
-  color: white;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 38px;
-
-  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
 
   box-shadow:
-    0 12px 30px rgba(190, 62, 117, 0.25);
+    0 20px 60px rgba(0,0,0,0.12);
+
+  padding: 32px;
+
+  text-align: center;
 }
 
-.match h2 {
-  font-size: 30px;
+.match-title {
+  color: var(--purple);
 
-  letter-spacing: -1.2px;
+  font-size: 15px;
 
-  margin: 0 0 8px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 12px;
 }
 
-.match p {
-  color: #6e6872;
+.match-heading {
+  font-size: 34px;
 
-  max-width: 330px;
+  font-weight: bold;
+
+  margin-bottom: 10px;
+}
+
+.match-description {
+  color: #666;
+
+  font-size: 15px;
 
   line-height: 1.5;
 
-  font-size: 13px;
+  margin-bottom: 25px;
 }
 
-.book {
-  margin-top: 18px;
+.match-photo {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  margin-bottom: 18px;
+
+  border: 4px solid var(--light-purple);
+}
+
+.meeting-btn {
+  width: 100%;
 
   border: none;
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--coral),
-      var(--purple)
-    );
+  background: var(--purple);
 
   color: white;
 
-  border-radius: 999px;
+  padding: 15px 20px;
 
-  padding: 13px 25px;
+  border-radius: 9px;
 
-  font-weight: 800;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 8px 22px rgba(190, 62, 117, 0.2);
-}
-
-.restart {
-  margin-top: 12px;
-
-  border: none;
-
-  background: transparent;
-
-  color: #888;
+  font-size: 16px;
+  font-weight: bold;
 
   cursor: pointer;
+
+  margin-bottom: 11px;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
+.meeting-btn:hover {
+  background: var(--dark-purple);
+}
+
+.meeting-btn:active {
+  transform: scale(0.98);
+}
+
+.restart-btn {
+  width: 100%;
+
+  border: 1px solid #ccc;
+
+  background: white;
+
+  color: #444;
+
+  padding: 13px 20px;
+
+  border-radius: 9px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  background: #f5f5f5;
+}
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
    ========================================================= */
-
-@media (max-width: 900px) {
-
-  .content {
-    grid-template-columns: 1fr;
-
-    max-width: 700px;
-  }
-
-  .intro {
-    text-align: center;
-  }
-
-  .intro p {
-    margin: auto;
-  }
-
-  .how {
-    display: none;
-  }
-
-  .page {
-    padding-top: 30px;
-  }
-}
-
 
 @media (max-width: 600px) {
 
   header {
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
-  .sfsu-label {
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-sub {
     display: none;
   }
 
-  .page {
-    padding: 20px 12px 35px;
+  .sfsu-link {
+    font-size: 13px;
   }
 
-  .intro h1 {
-    font-size: 39px;
-  }
-
-  .app-panel {
-    padding: 18px;
-
-    border-radius: 22px;
+  main {
+    padding-top: 18px;
   }
 
   .deck {
-    height: 475px;
+    height: 560px;
   }
 
-  .panel-top {
-    gap: 10px;
+  .photo-container {
+    height: 290px;
   }
 
-  .panel-subtitle {
-    max-width: 220px;
+  .name {
+    font-size: 27px;
+  }
+
+  .match-box {
+    padding: 25px;
   }
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
+<!-- =======================================================
      HEADER
-     ========================================================= -->
+     ======================================================= -->
 
 <header>
 
-  <div class="brand">
+  <div class="logo" id="logoButton">
 
-    <!-- =====================================================
-         LOGO
-         
-         IMPORTANT:
-         The filename must exactly match the file on GitHub.
-         
-         Example:
-         after-class-logo.png
-         ===================================================== -->
-
-    <div
-      class="logo-wrapper"
-      id="logoButton"
-      title="Refresh page"
-    >
-
-      <img
-        src="after-class-logo.png"
-        class="logo-image"
-        alt="After Class logo"
-        onerror="
-          this.style.display='none';
-          document.getElementById('logoFallback').style.display='flex';
-        "
-      >
-
-      <div
-        class="logo-fallback"
-        id="logoFallback"
-      >
-        AC
-      </div>
-
+    <div class="logo-mark">
+      AC
     </div>
 
+    <div>
+      <div class="logo-text">
+        After Class
+      </div>
 
-    <div class="brand-name">
-      After Class @ SFSU
+      <div class="logo-sub">
+        SFSU Office Hours
+      </div>
+    </div>
+
+  </div>
+
+  <a
+    class="sfsu-link"
+    id="sfsuFacultyLink"
+    href="https://faculty.sfsu.edu/atoz"
+  >
+    SFSU Faculty
+  </a>
+
+</header>
+
+
+<!-- =======================================================
+     MAIN
+     ======================================================= -->
+
+<main>
+
+  <div class="top-line">
+
+    <div class="title">
+      Find a professor to talk to
+    </div>
+
+    <div
+      class="counter"
+      id="counter"
+    >
+      1 / 6
     </div>
 
   </div>
 
 
   <div
-    class="sfsu-label"
-    id="sfsuFacultyLink"
-    title="SFSU Faculty A-Z"
-  >
-    SAN FRANCISCO STATE UNIVERSITY
-    Faculty A to Z
+    class="deck"
+    id="deck"
+  ></div>
+
+
+  <div class="actions">
+
+    <button
+      class="action-btn pass"
+      id="passBtn"
+      aria-label="Previous professor"
+    >
+      ✕
+    </button>
+
+    <button
+      class="action-btn like"
+      id="likeBtn"
+      aria-label="Next professor"
+    >
+      ♡
+    </button>
+
   </div>
 
-</header>
-
-
-<!-- =========================================================
-     MAIN
-     ========================================================= -->
-
-<div class="page">
-
-  <div class="content">
-
-
-    <!-- =====================================================
-         INTRO
-         ===================================================== -->
-
-    <section class="intro">
-
-      <div class="eyebrow">
-        SFSU • After Class Meeting
-      </div>
-
-
-      <h1>
-        Meet the<br>
-        right <span>person.</span>
-      </h1>
-
-
-      <p>
-        Office hours shouldn't feel like a guessing game.
-        Find the professor or TA who fits what you're working on,
-        then make the connection.
-      </p>
-
-
-      <div class="how">
-
-        <div class="how-row">
-
-          <div class="how-number">
-            1
-          </div>
-
-          Tell us what you're working on.
-
-        </div>
-
-
-        <div class="how-row">
-
-          <div class="how-number">
-            2
-          </div>
-
-          Swipe through faculty.
-
-        </div>
-
-
-        <div class="how-row">
-
-          <div class="how-number">
-            3
-          </div>
-
-          Meet after class.
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         APP PANEL
-         ===================================================== -->
-
-    <section class="app-panel">
-
-
-      <div class="panel-top">
-
-        <div>
-
-          <div class="panel-title">
-            Find your match
-          </div>
-
-          <div class="panel-subtitle">
-            Swipe right if you'd like to meet after class.
-          </div>
-
-        </div>
-
-
-        <div
-          class="profile-counter"
-          id="counter"
-        >
-          1 / 6
-        </div>
-
-      </div>
-
-
-      <!-- ===================================================
-           CARD DECK
-           =================================================== -->
-
-      <div
-        class="deck"
-        id="deck"
-      ></div>
-
-
-      <!-- ===================================================
-           ACTION BUTTONS
-           =================================================== -->
-
-      <div class="actions">
-
-        <button
-          class="action pass"
-          id="passBtn"
-          aria-label="Previous professor"
-          type="button"
-        >
-          ✕
-        </button>
-
-
-        <button
-          class="action like"
-          id="likeBtn"
-          aria-label="Next professor"
-          type="button"
-        >
-          ♡
-        </button>
-
-      </div>
-
-
-      <div class="hint">
-        Drag a card left or right
-      </div>
-
-
-      <!-- ===================================================
-           MATCH SCREEN
-           =================================================== -->
-
-      <div
-        class="match"
-        id="match"
-      >
-
-        <div class="match-circle">
-          ♥
-        </div>
-
-
-        <h2>
-          It's a match.
-        </h2>
-
-
-        <p id="matchText"></p>
-
-
-        <button
-          class="book"
-          id="bookBtn"
-          type="button"
-        >
-          Schedule a meeting
-        </button>
-
-
-        <button
-          class="restart"
-          id="restartBtn"
-          type="button"
-        >
-          Start over
-        </button>
-
-      </div>
-
-
-    </section>
+</main>
+
+
+<!-- =======================================================
+     MATCH SCREEN
+     ======================================================= -->
+
+<div
+  class="match-screen"
+  id="matchScreen"
+>
+
+  <div class="match-box">
+
+    <img
+      class="match-photo"
+      id="matchPhoto"
+      src=""
+      alt=""
+    >
+
+    <div class="match-title">
+      It's a Match
+    </div>
+
+    <div
+      class="match-heading"
+      id="matchName"
+    >
+      Professor
+    </div>
+
+    <div
+      class="match-description"
+      id="matchDescription"
+    >
+      You found a professor whose office hours may be a good fit.
+    </div>
+
+    <button
+      class="meeting-btn"
+      id="meetingBtn"
+    >
+      Schedule a meeting
+    </button>
+
+    <button
+      class="restart-btn"
+      id="restartBtn"
+    >
+      Continue browsing
+    </button>
 
   </div>
 
@@ -1256,12 +747,7 @@ const professors = [
 
     role: "President • San Francisco State University",
 
-    initials: "LM",
-
     photo: "pre.png",
-
-    bio:
-      "President of San Francisco State University, supporting the university's academic community, students, faculty, and broader mission.",
 
     tags: [
       "Leadership",
@@ -1271,12 +757,8 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#6a2c91"
+      "Request a meeting with the President."
   },
-
 
   {
     name: "David Quintero",
@@ -1285,12 +767,7 @@ const professors = [
 
     role: "Associate Professor • Engineering",
 
-    initials: "DQ",
-
     photo: "david.png",
-
-    bio:
-      "Faculty member in engineering working with students on mechanical engineering, engineering design, and applied technical problems.",
 
     tags: [
       "Mechanical Engineering",
@@ -1300,12 +777,8 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#d94342"
+      "Interested students can learn more about joining the lab."
   },
-
 
   {
     name: "Benjamin Sabey",
@@ -1314,12 +787,7 @@ const professors = [
 
     role: "Faculty • Composition",
 
-    initials: "BS",
-
     photo: "ben.png",
-
-    bio:
-      "Composer and educator working with students interested in composition, contemporary music, and creative musical development.",
 
     tags: [
       "Composition",
@@ -1329,12 +797,8 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#a84391"
+      "Book a meeting through Calendly."
   },
-
 
   {
     name: "Zakarias Grafilo",
@@ -1343,12 +807,7 @@ const professors = [
 
     role: "Faculty • Chamber Music",
 
-    initials: "ZG",
-
     photo: "zak.png",
-
-    bio:
-      "Works with musicians in chamber music and collaborative performance, helping students develop ensemble skills and musical interpretation.",
 
     tags: [
       "Chamber Music",
@@ -1358,12 +817,8 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#6a2c91"
+      "View faculty information and contact details."
   },
-
 
   {
     name: "Sybil Yang",
@@ -1372,12 +827,7 @@ const professors = [
 
     role: "Faculty • Business",
 
-    initials: "SY",
-
     photo: "yang.png",
-
-    bio:
-      "Faculty member in business, connecting academic study with practical questions in organizations, management, and professional development.",
 
     tags: [
       "Business",
@@ -1387,12 +837,8 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#d94342"
+      "Visit the faculty page for information."
   },
-
 
   {
     name: "Vera Klimkovsky",
@@ -1401,12 +847,7 @@ const professors = [
 
     role: "Faculty • Mathematics",
 
-    initials: "VK",
-
     photo: "vera.png",
-
-    bio:
-      "Mathematics faculty member working with students across mathematical topics and helping connect abstract concepts with rigorous problem solving.",
 
     tags: [
       "Mathematics",
@@ -1416,69 +857,61 @@ const professors = [
     ],
 
     availability:
-      "Check faculty office hours",
-
-    color:
-      "#a84391"
+      "View faculty information and contact details."
   }
 
 ];
 
 
 /* =========================================================
-   CALENDLY LINKS
+   REAL LINKS
    ========================================================= */
 
 const CALENDLY_LINKS = {
 
   "Lynn Mahoney":
-    "",
+    "https://president.sfsu.edu/request-presidents-attendance",
 
   "David Quintero":
-    "",
+    "https://www.careroboticslab.com/interested-students",
 
   "Benjamin Sabey":
-    "",
+    "https://calendly.com/bensabey",
 
   "Zakarias Grafilo":
-    "",
+    "https://music.sfsu.edu/people/zakarias-grafilo",
 
   "Sybil Yang":
-    "",
+    "https://faculty.sfsu.edu/~sybil",
 
   "Vera Klimkovsky":
-    ""
+    "https://cob.sfsu.edu/decision-sciences/directory/vera-klimkovsky"
 
 };
 
 
 /* =========================================================
-   APP STATE
+   STATE
    ========================================================= */
 
 let index = 0;
 
+let currentCard = null;
+
 let startX = 0;
+let startY = 0;
 
 let currentX = 0;
 
 let dragging = false;
 
-let activeCard = null;
-
 
 /* =========================================================
-   DOM
+   ELEMENTS
    ========================================================= */
 
 const deck =
   document.getElementById("deck");
-
-const match =
-  document.getElementById("match");
-
-const matchText =
-  document.getElementById("matchText");
 
 const counter =
   document.getElementById("counter");
@@ -1489,8 +922,20 @@ const passBtn =
 const likeBtn =
   document.getElementById("likeBtn");
 
-const bookBtn =
-  document.getElementById("bookBtn");
+const matchScreen =
+  document.getElementById("matchScreen");
+
+const matchPhoto =
+  document.getElementById("matchPhoto");
+
+const matchName =
+  document.getElementById("matchName");
+
+const matchDescription =
+  document.getElementById("matchDescription");
+
+const meetingBtn =
+  document.getElementById("meetingBtn");
 
 const restartBtn =
   document.getElementById("restartBtn");
@@ -1503,28 +948,152 @@ const sfsuFacultyLink =
 
 
 /* =========================================================
-   LOGO → REFRESH PAGE
+   HEADER ACTIONS
    ========================================================= */
 
-logoButton.onclick =
-  function() {
+logoButton.onclick = function() {
 
-    window.location.reload();
+  window.location.reload();
 
-  };
+};
+
+
+sfsuFacultyLink.onclick = function(e) {
+
+  e.preventDefault();
+
+  window.location.href =
+    "https://faculty.sfsu.edu/atoz";
+
+};
 
 
 /* =========================================================
-   SFSU LABEL → FACULTY A-Z
+   CREATE CARD
    ========================================================= */
 
-sfsuFacultyLink.onclick =
-  function() {
+function createCard(p, preview) {
 
-    window.location.href =
-      "https://faculty.sfsu.edu/atoz";
+  const card =
+    document.createElement("div");
 
-  };
+  card.className =
+    preview
+      ? "card next-preview"
+      : "card current";
+
+
+  const link =
+    CALENDLY_LINKS[p.name];
+
+
+  let availabilityHTML = p.availability;
+
+
+  if (link) {
+
+    availabilityHTML = `
+      <a
+        href="${link}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="availability-link"
+      >
+        ${p.availability}
+      </a>
+    `;
+
+  }
+
+
+  card.innerHTML = `
+
+    <div class="photo-container">
+
+      <img
+        class="photo"
+        src="${p.photo}"
+        alt="${p.name}"
+        draggable="false"
+      >
+
+      <div class="stamp next">
+        NEXT
+      </div>
+
+      <div class="stamp previous">
+        PREVIOUS
+      </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+      <div class="department">
+        ${p.department}
+      </div>
+
+      <div class="name">
+        ${p.name}
+      </div>
+
+      <div class="role">
+        ${p.role}
+      </div>
+
+      <div class="tags">
+
+        ${p.tags
+          .map(tag => `
+            <span class="tag">
+              ${tag}
+            </span>
+          `)
+          .join("")}
+
+      </div>
+
+      <div class="availability">
+        ${availabilityHTML}
+      </div>
+
+    </div>
+
+  `;
+
+
+  /*
+   * Prevent clicking the profile link
+   * from starting a card drag.
+   */
+
+  const availabilityLink =
+    card.querySelector(".availability-link");
+
+
+  if (availabilityLink) {
+
+    availabilityLink.addEventListener(
+      "pointerdown",
+      function(e) {
+        e.stopPropagation();
+      }
+    );
+
+    availabilityLink.addEventListener(
+      "click",
+      function(e) {
+        e.stopPropagation();
+      }
+    );
+
+  }
+
+
+  return card;
+
+}
 
 
 /* =========================================================
@@ -1539,10 +1108,14 @@ function render() {
     `${index + 1} / ${professors.length}`;
 
 
-  /* Next card preview */
+  /*
+   * Always show the next professor
+   * behind the current card.
+   */
 
   const nextIndex =
     (index + 1) % professors.length;
+
 
   const nextCard =
     createCard(
@@ -1550,154 +1123,28 @@ function render() {
       true
     );
 
+
   deck.appendChild(nextCard);
 
 
-  /* Current card */
+  /*
+   * Current professor
+   */
 
-  const currentCard =
+  const card =
     createCard(
       professors[index],
       false
     );
 
-  deck.appendChild(currentCard);
 
-  attachDrag(currentCard);
-}
+  deck.appendChild(card);
 
 
-/* =========================================================
-   CREATE CARD
-   ========================================================= */
+  currentCard = card;
 
-function createCard(p, back) {
+  attachDrag(card);
 
-  const card =
-    document.createElement("div");
-
-  card.className = "card";
-
-
-  if (back) {
-
-    card.style.transform =
-      "scale(.96) translateY(10px)";
-
-    card.style.opacity =
-      ".75";
-
-    card.style.pointerEvents =
-      "none";
-  }
-
-
-  const photoHTML = p.photo
-
-    ? `
-        <img
-          src="${p.photo}"
-          class="professor-photo"
-          alt="${p.name}"
-        >
-      `
-
-    : `
-        <div
-          class="avatar-placeholder"
-          style="background:${p.color}"
-        >
-          ${p.initials}
-        </div>
-      `;
-
-
-  card.innerHTML = `
-
-    <div class="photo">
-
-      <div class="department">
-        ${p.department}
-      </div>
-
-
-      <div class="verified">
-        ✓
-      </div>
-
-
-      ${photoHTML}
-
-    </div>
-
-
-    <div class="info">
-
-      <div class="name-row">
-
-        <div class="name">
-          ${p.name}
-        </div>
-
-        <div class="faculty">
-          SFSU Faculty
-        </div>
-
-      </div>
-
-
-      <div class="role">
-        ${p.role}
-      </div>
-
-
-      <div class="bio">
-        ${p.bio}
-      </div>
-
-
-      <div class="tags">
-
-        ${p.tags
-          .map(
-            tag => `
-              <span class="tag">
-                ${tag}
-              </span>
-            `
-          )
-          .join("")
-        }
-
-      </div>
-
-
-      <div class="availability">
-
-        Office hour:
-
-        <b>
-          ${p.availability}
-        </b>
-
-      </div>
-
-    </div>
-
-
-    <div class="stamp like-stamp">
-      NEXT
-    </div>
-
-
-    <div class="stamp nope-stamp">
-      PREVIOUS
-    </div>
-
-  `;
-
-
-  return card;
 }
 
 
@@ -1709,177 +1156,205 @@ function attachDrag(card) {
 
   card.addEventListener(
     "pointerdown",
-    function(e) {
-
-      dragging = true;
-
-      activeCard = card;
-
-      startX =
-        e.clientX;
-
-      currentX = 0;
-
-
-      card.classList.add(
-        "dragging"
-      );
-
-
-      card.setPointerCapture(
-        e.pointerId
-      );
-
-    }
+    pointerDown
   );
-
 
   card.addEventListener(
     "pointermove",
-    function(e) {
-
-      if (!dragging) {
-        return;
-      }
-
-      if (activeCard !== card) {
-        return;
-      }
-
-
-      currentX =
-        e.clientX - startX;
-
-
-      const rotate =
-        currentX * 0.055;
-
-
-      card.style.transform =
-        `translateX(${currentX}px) rotate(${rotate}deg)`;
-
-
-      const likeStamp =
-        card.querySelector(
-          ".like-stamp"
-        );
-
-
-      const nopeStamp =
-        card.querySelector(
-          ".nope-stamp"
-        );
-
-
-      likeStamp.style.opacity =
-        Math.min(
-          Math.max(
-            currentX / 100,
-            0
-          ),
-          1
-        );
-
-
-      nopeStamp.style.opacity =
-        Math.min(
-          Math.max(
-            -currentX / 100,
-            0
-          ),
-          1
-        );
-
-    }
+    pointerMove
   );
-
 
   card.addEventListener(
     "pointerup",
-    function() {
-
-      if (!dragging) {
-        return;
-      }
-
-      if (activeCard !== card) {
-        return;
-      }
-
-
-      dragging = false;
-
-      activeCard = null;
-
-
-      card.classList.remove(
-        "dragging"
-      );
-
-
-      card.style.transition =
-        "transform .28s ease, opacity .28s ease";
-
-
-      if (currentX > 120) {
-
-        swipe(
-          "right",
-          card
-        );
-
-        return;
-      }
-
-
-      if (currentX < -120) {
-
-        swipe(
-          "left",
-          card
-        );
-
-        return;
-      }
-
-
-      card.style.transform =
-        "";
-
-
-      card.querySelector(
-        ".like-stamp"
-      ).style.opacity = 0;
-
-
-      card.querySelector(
-        ".nope-stamp"
-      ).style.opacity = 0;
-
-    }
+    pointerUp
   );
-
 
   card.addEventListener(
     "pointercancel",
-    function() {
-
-      dragging = false;
-
-      activeCard = null;
-
-      card.classList.remove(
-        "dragging"
-      );
-
-      card.style.transition =
-        "transform .28s ease";
-
-      card.style.transform =
-        "";
-
-    }
+    pointerUp
   );
+
+}
+
+
+/* =========================================================
+   POINTER DOWN
+   ========================================================= */
+
+function pointerDown(e) {
+
+  if (!currentCard) {
+    return;
+  }
+
+  dragging = true;
+
+  startX = e.clientX;
+  startY = e.clientY;
+
+  currentX = 0;
+
+  currentCard.style.transition =
+    "none";
+
+  currentCard.setPointerCapture(
+    e.pointerId
+  );
+
+}
+
+
+/* =========================================================
+   POINTER MOVE
+   ========================================================= */
+
+function pointerMove(e) {
+
+  if (!dragging || !currentCard) {
+    return;
+  }
+
+  currentX =
+    e.clientX - startX;
+
+  const currentY =
+    e.clientY - startY;
+
+
+  /*
+   * Rotation follows horizontal movement.
+   */
+
+  const rotation =
+    currentX * 0.04;
+
+
+  currentCard.style.transform =
+    `translateX(${currentX}px)
+     translateY(${currentY * 0.15}px)
+     rotate(${rotation}deg)`;
+
+
+  /*
+   * Show the appropriate stamp.
+   */
+
+  const nextStamp =
+    currentCard.querySelector(".stamp.next");
+
+  const previousStamp =
+    currentCard.querySelector(".stamp.previous");
+
+
+  if (currentX > 20) {
+
+    nextStamp.style.opacity =
+      Math.min(currentX / 100, 1);
+
+    previousStamp.style.opacity = 0;
+
+  }
+
+  else if (currentX < -20) {
+
+    previousStamp.style.opacity =
+      Math.min(Math.abs(currentX) / 100, 1);
+
+    nextStamp.style.opacity = 0;
+
+  }
+
+  else {
+
+    nextStamp.style.opacity = 0;
+
+    previousStamp.style.opacity = 0;
+
+  }
+
+}
+
+
+/* =========================================================
+   POINTER UP
+   ========================================================= */
+
+function pointerUp(e) {
+
+  if (!dragging || !currentCard) {
+    return;
+  }
+
+  dragging = false;
+
+
+  const threshold = 110;
+
+
+  /*
+   * RIGHT
+   *
+   * Right swipe means NEXT.
+   * It also opens the Match screen.
+   */
+
+  if (currentX > threshold) {
+
+    const selectedProfessor =
+      professors[index];
+
+
+    swipe(
+      "right",
+      currentCard,
+      selectedProfessor
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * LEFT
+   *
+   * Left swipe means PREVIOUS.
+   */
+
+  if (currentX < -threshold) {
+
+    swipe(
+      "left",
+      currentCard
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Not enough movement.
+   * Return the card to center.
+   */
+
+  currentCard.style.transition =
+    "transform 0.25s ease";
+
+  currentCard.style.transform =
+    "translateX(0) translateY(0) rotate(0deg)";
+
+
+  const nextStamp =
+    currentCard.querySelector(".stamp.next");
+
+  const previousStamp =
+    currentCard.querySelector(".stamp.previous");
+
+
+  nextStamp.style.opacity = 0;
+
+  previousStamp.style.opacity = 0;
 
 }
 
@@ -1890,78 +1365,88 @@ function attachDrag(card) {
 
 function swipe(
   direction,
-  card
+  card,
+  selectedProfessor = null
 ) {
 
-  if (
-    !card ||
-    card.dataset.swiped === "true"
-  ) {
+  if (!card) {
     return;
   }
 
 
-  card.dataset.swiped =
-    "true";
+  /*
+   * Animate card away.
+   */
+
+  card.style.transition =
+    "transform 0.3s ease, opacity 0.3s ease";
 
 
-  const amount =
+  const distance =
     direction === "right"
-      ? 800
-      : -800;
+      ? window.innerWidth + 300
+      : -window.innerWidth - 300;
 
 
   const rotation =
     direction === "right"
-      ? 25
-      : -25;
-
-
-  card.style.transition =
-    "transform .28s ease, opacity .28s ease";
+      ? 18
+      : -18;
 
 
   card.style.transform =
-    `translateX(${amount}px) rotate(${rotation}deg)`;
+    `translateX(${distance}px)
+     rotate(${rotation}deg)`;
 
 
-  card.style.opacity =
-    "0";
+  card.style.opacity = 0;
 
 
-  setTimeout(
-    function() {
+  setTimeout(function() {
 
-      if (
-        direction === "right"
-      ) {
 
-        /*
-          Right = NEXT PROFESSOR
-        */
+    /*
+     * RIGHT
+     *
+     * Advance to next professor,
+     * then show Match screen.
+     */
 
-        index =
-          (index + 1) %
-          professors.length;
+    if (direction === "right") {
 
-      } else {
-
-        /*
-          Left = PREVIOUS PROFESSOR
-        */
-
-        index =
-          (index - 1 + professors.length) %
-          professors.length;
-
-      }
+      index =
+        (index + 1) %
+        professors.length;
 
 
       render();
 
-    },
-    280
-  );
+
+      showMatch(
+        selectedProfessor
+      );
+
+
+      return;
+
+    }
+
+
+    /*
+     * LEFT
+     *
+     * Go to previous professor.
+     */
+
+    index =
+      (index - 1 + professors.length) %
+      professors.length;
+
+
+    render();
+
+
+  }, 300);
 
 }
 
@@ -1970,145 +1455,133 @@ function swipe(
    MATCH SCREEN
    ========================================================= */
 
-/*
-   Match screen is kept in the HTML so the existing
-   structure remains intact, but swiping now moves
-   directly between professor profiles.
-*/
+let matchedProfessor = null;
 
 
-function showMatch(p) {
+function showMatch(professor) {
 
-  matchText.innerHTML = `
-
-    <b>
-      ${p.name}
-    </b>
-
-    looks like a great match
-    for your interests.
-
-    <br><br>
-
-    ${p.department}
-
-    ·
-
-    ${p.tags
-      .slice(0, 2)
-      .join(" · ")
-    }
-
-    <br>
-
-    Office hour:
-    ${p.availability}
-
-  `;
+  if (!professor) {
+    return;
+  }
 
 
-  match.classList.add(
-    "show"
+  matchedProfessor =
+    professor;
+
+
+  matchPhoto.src =
+    professor.photo;
+
+  matchPhoto.alt =
+    professor.name;
+
+
+  matchName.textContent =
+    professor.name;
+
+
+  matchDescription.textContent =
+    `${professor.role}. You can use the link below to learn more or request a meeting.`;
+
+
+  matchScreen.classList.add(
+    "visible"
   );
-
-
-  bookBtn.onclick =
-    function() {
-
-      const calendlyURL =
-        CALENDLY_LINKS[p.name];
-
-
-      if (calendlyURL) {
-
-        window.location.href =
-          calendlyURL;
-
-      } else {
-
-        alert(
-          `No Calendly link has been configured for ${p.name} yet.`
-        );
-
-      }
-
-    };
 
 }
 
 
 /* =========================================================
-   PASS BUTTON
+   SCHEDULE MEETING
    ========================================================= */
 
-passBtn.onclick =
-  function() {
+meetingBtn.onclick = function() {
 
-    const card =
-      deck.querySelector(
-        ".card:not([data-swiped='true'])"
-      );
+  if (!matchedProfessor) {
+    return;
+  }
 
 
-    if (card) {
+  const link =
+    CALENDLY_LINKS[
+      matchedProfessor.name
+    ];
 
-      swipe(
-        "left",
-        card
-      );
 
-    }
+  if (!link) {
+    return;
+  }
 
-  };
+
+  window.location.href = link;
+
+};
 
 
 /* =========================================================
-   MEET / NEXT BUTTON
+   CONTINUE BROWSING
    ========================================================= */
 
-likeBtn.onclick =
-  function() {
+restartBtn.onclick = function() {
 
-    const card =
-      deck.querySelector(
-        ".card:not([data-swiped='true'])"
-      );
+  matchScreen.classList.remove(
+    "visible"
+  );
 
 
-    if (card) {
+  matchedProfessor = null;
 
-      swipe(
-        "right",
-        card
-      );
 
-    }
+  render();
 
-  };
+};
 
 
 /* =========================================================
-   RESTART
+   BUTTON: PREVIOUS
    ========================================================= */
 
-restartBtn.onclick =
-  function() {
+passBtn.onclick = function() {
 
-    dragging = false;
+  if (!currentCard) {
+    return;
+  }
 
-    activeCard = null;
 
-    match.classList.remove(
-      "show"
-    );
+  swipe(
+    "left",
+    currentCard
+  );
 
-    render();
-
-  };
+};
 
 
 /* =========================================================
-   INITIALIZE
+   BUTTON: NEXT / MATCH
+   ========================================================= */
+
+likeBtn.onclick = function() {
+
+  if (!currentCard) {
+    return;
+  }
+
+
+  const selectedProfessor =
+    professors[index];
+
+
+  swipe(
+    "right",
+    currentCard,
+    selectedProfessor
+  );
+
+};
+
+
+/* =========================================================
+   INITIAL RENDER
    ========================================================= */
 
 render();
