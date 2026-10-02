@@ -1320,10 +1320,10 @@ function attachDrag(card) {
        * = NEXT professor
        */
 
-      if (currentX > 120) {
+      if (currentX < -120) {
 
         swipe(
-          "right",
+          "left",
           card
         );
 
@@ -1337,10 +1337,10 @@ function attachDrag(card) {
        * = PREVIOUS professor
        */
 
-      if (currentX < -120) {
+      if (currentX > 120) {
 
         swipe(
-          "left",
+          "right",
           card
         );
 
