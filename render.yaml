@@ -11,7 +11,7 @@ services:
         value: openai
       - key: OPENAI_MODEL
         value: gpt-5-mini
-      - key: openai_key
+      - key: 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
         sync: false
       - key: ALLOWED_ORIGINS
         value: https://afterclass.github.io,https://devtaehunlee.github.io
