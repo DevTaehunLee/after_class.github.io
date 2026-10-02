@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,10 +384,6 @@ header {
   font-size: 11px;
 }
 
-.availability b {
-  color: #2d2633;
-}
-
 /* SWIPE STAMPS */
 .stamp {
   position: absolute;
@@ -596,12 +591,15 @@ header {
 <body>
 
 <header>
+
   <div class="brand">
+
     <div
       class="logo-wrapper"
       id="logoButton"
       title="Refresh page"
     >
+
       <img
         src="after-class-logo.png"
         class="logo-image"
@@ -612,14 +610,19 @@ header {
         "
       >
 
-      <div class="logo-fallback" id="logoFallback">
+      <div
+        class="logo-fallback"
+        id="logoFallback"
+      >
         AC
       </div>
+
     </div>
 
     <div class="brand-name">
       After Class @ SFSU
     </div>
+
   </div>
 
   <div
@@ -630,12 +633,18 @@ header {
     SAN FRANCISCO STATE UNIVERSITY
     Faculty A to Z
   </div>
+
 </header>
 
+
 <div class="page">
+
   <div class="content">
 
+    <!-- LEFT INTRO -->
+
     <section class="intro">
+
       <div class="eyebrow">
         SFSU • After Class Meeting
       </div>
@@ -652,6 +661,7 @@ header {
       </p>
 
       <div class="how">
+
         <div class="how-row">
           <div class="how-number">1</div>
           Tell us what you're working on.
@@ -666,13 +676,20 @@ header {
           <div class="how-number">3</div>
           Meet after class.
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- APP PANEL -->
 
     <section class="app-panel">
 
       <div class="panel-top">
+
         <div>
+
           <div class="panel-title">
             Find your match
           </div>
@@ -680,20 +697,35 @@ header {
           <div class="panel-subtitle">
             Swipe right if you'd like to meet after class.
           </div>
+
         </div>
 
-        <div class="profile-counter" id="counter">
+        <div
+          class="profile-counter"
+          id="counter"
+        >
           1 / 6
         </div>
+
       </div>
 
-      <div class="deck" id="deck"></div>
+
+      <!-- CARD DECK -->
+
+      <div
+        class="deck"
+        id="deck"
+      ></div>
+
+
+      <!-- BUTTONS -->
 
       <div class="actions">
+
         <button
           class="action pass"
           id="passBtn"
-          aria-label="Previous professor"
+          aria-label="Next professor"
           type="button"
         >
           ✕
@@ -702,18 +734,27 @@ header {
         <button
           class="action like"
           id="likeBtn"
-          aria-label="Next professor"
+          aria-label="Match with professor"
           type="button"
         >
           ♡
         </button>
+
       </div>
+
 
       <div class="hint">
         Drag a card left or right
       </div>
 
-      <div class="match" id="match">
+
+      <!-- MATCH SCREEN -->
+
+      <div
+        class="match"
+        id="match"
+      >
+
         <div class="match-circle">
           ♥
         </div>
@@ -737,19 +778,26 @@ header {
           id="restartBtn"
           type="button"
         >
-          Start over
+          Continue browsing
         </button>
+
       </div>
 
     </section>
+
   </div>
+
 </div>
+
 
 <script>
 
-/* PROFESSOR DATA */
+/* =========================================================
+   PROFESSOR DATA
+   ========================================================= */
 
 const professors = [
+
   {
     name: "Lynn Mahoney",
     department: "University Administration",
@@ -851,12 +899,16 @@ const professors = [
     availability: "Check faculty office hours",
     color: "#a84391"
   }
+
 ];
 
 
-/* PROFESSOR CONNECTION LINKS */
+/* =========================================================
+   REAL PROFESSOR LINKS
+   ========================================================= */
 
 const CALENDLY_LINKS = {
+
   "Lynn Mahoney":
     "https://president.sfsu.edu/request-presidents-attendance",
 
@@ -874,113 +926,146 @@ const CALENDLY_LINKS = {
 
   "Vera Klimkovsky":
     "https://cob.sfsu.edu/decision-sciences/directory/vera-klimkovsky"
+
 };
 
 
-/* APP STATE */
+/* =========================================================
+   STATE
+   ========================================================= */
 
 let index = 0;
+
 let startX = 0;
+
 let currentX = 0;
+
 let dragging = false;
+
 let activeCard = null;
 
-
-/* DOM */
-
-const deck = document.getElementById("deck");
-const match = document.getElementById("match");
-const matchText = document.getElementById("matchText");
-const counter = document.getElementById("counter");
-const passBtn = document.getElementById("passBtn");
-const likeBtn = document.getElementById("likeBtn");
-const bookBtn = document.getElementById("bookBtn");
-const restartBtn = document.getElementById("restartBtn");
-const logoButton = document.getElementById("logoButton");
-const sfsuFacultyLink = document.getElementById("sfsuFacultyLink");
+let matchedProfessor = null;
 
 
-/* LOGO → REFRESH PAGE */
+/* =========================================================
+   DOM ELEMENTS
+   ========================================================= */
+
+const deck =
+  document.getElementById("deck");
+
+const match =
+  document.getElementById("match");
+
+const matchText =
+  document.getElementById("matchText");
+
+const counter =
+  document.getElementById("counter");
+
+const passBtn =
+  document.getElementById("passBtn");
+
+const likeBtn =
+  document.getElementById("likeBtn");
+
+const bookBtn =
+  document.getElementById("bookBtn");
+
+const restartBtn =
+  document.getElementById("restartBtn");
+
+const logoButton =
+  document.getElementById("logoButton");
+
+const sfsuFacultyLink =
+  document.getElementById("sfsuFacultyLink");
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
 
 logoButton.onclick = function() {
+
   window.location.reload();
+
 };
 
 
-/* SFSU LABEL → FACULTY A-Z */
+/* =========================================================
+   SFSU FACULTY LINK
+   ========================================================= */
 
 sfsuFacultyLink.onclick = function() {
-  window.location.href = "https://faculty.sfsu.edu/atoz";
+
+  window.location.href =
+    "https://faculty.sfsu.edu/atoz";
+
 };
 
 
-/* RENDER */
-
-function render() {
-  deck.innerHTML = "";
-
-  counter.textContent =
-    `${index + 1} / ${professors.length}`;
-
-  /* Next card preview */
-  const nextIndex =
-    (index + 1) % professors.length;
-
-  const nextCard =
-    createCard(
-      professors[nextIndex],
-      true
-    );
-
-  deck.appendChild(nextCard);
-
-  /* Current card */
-  const currentCard =
-    createCard(
-      professors[index],
-      false
-    );
-
-  deck.appendChild(currentCard);
-
-  attachDrag(currentCard);
-}
-
-
-/* CREATE CARD */
+/* =========================================================
+   CREATE CARD
+   ========================================================= */
 
 function createCard(p, back) {
-  const card = document.createElement("div");
 
-  card.className = "card";
+  const card =
+    document.createElement("div");
+
+  card.className =
+    "card";
+
+
+  /*
+   * The card behind the current card
+   */
 
   if (back) {
+
     card.style.transform =
       "scale(.96) translateY(10px)";
 
-    card.style.opacity = ".75";
-    card.style.pointerEvents = "none";
+    card.style.opacity =
+      ".75";
+
+    card.style.pointerEvents =
+      "none";
+
   }
 
-  const photoHTML = p.photo
-    ? `
-        <img
-          src="${p.photo}"
-          class="professor-photo"
-          alt="${p.name}"
-          draggable="false"
-        >
-      `
-    : `
-        <div
-          class="avatar-placeholder"
-          style="background:${p.color}"
-        >
-          ${p.initials}
-        </div>
-      `;
+
+  let photoHTML;
+
+
+  if (p.photo) {
+
+    photoHTML = `
+      <img
+        src="${p.photo}"
+        class="professor-photo"
+        alt="${p.name}"
+        draggable="false"
+      >
+    `;
+
+  } else {
+
+    photoHTML = `
+      <div
+        class="avatar-placeholder"
+        style="background:${p.color}"
+      >
+        ${p.initials}
+      </div>
+    `;
+
+  }
+
 
   card.innerHTML = `
+
     <div class="photo">
 
       <div class="department">
@@ -994,6 +1079,7 @@ function createCard(p, back) {
       ${photoHTML}
 
     </div>
+
 
     <div class="info">
 
@@ -1009,15 +1095,19 @@ function createCard(p, back) {
 
       </div>
 
+
       <div class="role">
         ${p.role}
       </div>
+
 
       <div class="bio">
         ${p.bio}
       </div>
 
+
       <div class="tags">
+
         ${p.tags
           .map(
             tag => `
@@ -1028,7 +1118,9 @@ function createCard(p, back) {
           )
           .join("")
         }
+
       </div>
+
 
       <div class="availability">
         Office hour:
@@ -1037,126 +1129,284 @@ function createCard(p, back) {
 
     </div>
 
+
     <div class="stamp like-stamp">
       NEXT
     </div>
 
+
     <div class="stamp nope-stamp">
       PREVIOUS
     </div>
+
   `;
 
+
   return card;
+
 }
 
 
-/* DRAG / SWIPE */
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function render() {
+
+  deck.innerHTML = "";
+
+
+  counter.textContent =
+    `${index + 1} / ${professors.length}`;
+
+
+  /*
+   * Next professor preview
+   */
+
+  const nextIndex =
+    (index + 1) %
+    professors.length;
+
+
+  const nextCard =
+    createCard(
+      professors[nextIndex],
+      true
+    );
+
+
+  deck.appendChild(nextCard);
+
+
+  /*
+   * Current professor
+   */
+
+  const currentCard =
+    createCard(
+      professors[index],
+      false
+    );
+
+
+  deck.appendChild(currentCard);
+
+
+  attachDrag(currentCard);
+
+}
+
+
+/* =========================================================
+   DRAG HANDLING
+   ========================================================= */
 
 function attachDrag(card) {
+
 
   card.addEventListener(
     "pointerdown",
     function(e) {
 
+      /*
+       * Do not start dragging if the
+       * Match screen is visible.
+       */
+
+      if (match.classList.contains("show")) {
+        return;
+      }
+
+
       dragging = true;
+
       activeCard = card;
+
       startX = e.clientX;
+
       currentX = 0;
+
 
       card.classList.add("dragging");
 
-      card.setPointerCapture(e.pointerId);
+
+      card.setPointerCapture(
+        e.pointerId
+      );
+
     }
   );
+
 
   card.addEventListener(
     "pointermove",
     function(e) {
 
-      if (!dragging || activeCard !== card) {
+      if (
+        !dragging ||
+        activeCard !== card
+      ) {
         return;
       }
 
-      currentX = e.clientX - startX;
 
-      const rotate = currentX * 0.055;
+      currentX =
+        e.clientX - startX;
+
+
+      const rotate =
+        currentX * 0.055;
+
 
       card.style.transform =
-        `translateX(${currentX}px) rotate(${rotate}deg)`;
+        `translateX(${currentX}px)
+         rotate(${rotate}deg)`;
+
 
       const likeStamp =
-        card.querySelector(".like-stamp");
+        card.querySelector(
+          ".like-stamp"
+        );
+
 
       const nopeStamp =
-        card.querySelector(".nope-stamp");
+        card.querySelector(
+          ".nope-stamp"
+        );
+
 
       likeStamp.style.opacity =
-        Math.min(Math.max(currentX / 100, 0), 1);
+        Math.min(
+          Math.max(currentX / 100, 0),
+          1
+        );
+
 
       nopeStamp.style.opacity =
-        Math.min(Math.max(-currentX / 100, 0), 1);
+        Math.min(
+          Math.max(-currentX / 100, 0),
+          1
+        );
+
     }
   );
+
 
   card.addEventListener(
     "pointerup",
     function() {
 
-      if (!dragging || activeCard !== card) {
+      if (
+        !dragging ||
+        activeCard !== card
+      ) {
         return;
       }
+
 
       dragging = false;
+
       activeCard = null;
 
-      card.classList.remove("dragging");
 
-      card.style.transition =
-        "transform .28s ease, opacity .28s ease";
+      card.classList.remove(
+        "dragging"
+      );
+
+
+      /*
+       * Swipe right
+       * = NEXT professor
+       */
 
       if (currentX > 120) {
-        swipe("right", card);
+
+        swipe(
+          "right",
+          card
+        );
+
         return;
+
       }
+
+
+      /*
+       * Swipe left
+       * = PREVIOUS professor
+       */
 
       if (currentX < -120) {
-        swipe("left", card);
+
+        swipe(
+          "left",
+          card
+        );
+
         return;
+
       }
 
-      card.style.transform = "";
+
+      /*
+       * Not enough movement
+       * = return to center
+       */
+
+      card.style.transition =
+        "transform .28s ease";
+
+
+      card.style.transform =
+        "";
+
 
       card.querySelector(
         ".like-stamp"
       ).style.opacity = 0;
 
+
       card.querySelector(
         ".nope-stamp"
       ).style.opacity = 0;
+
     }
   );
+
 
   card.addEventListener(
     "pointercancel",
     function() {
 
       dragging = false;
+
       activeCard = null;
 
-      card.classList.remove("dragging");
+      card.classList.remove(
+        "dragging"
+      );
 
       card.style.transition =
         "transform .28s ease";
 
-      card.style.transform = "";
+      card.style.transform =
+        "";
+
     }
   );
+
 }
 
 
-/* SWIPE */
+/* =========================================================
+   SWIPE
+   ========================================================= */
 
-function swipe(direction, card) {
+function swipe(
+  direction,
+  card
+) {
 
   if (
     !card ||
@@ -1165,48 +1415,92 @@ function swipe(direction, card) {
     return;
   }
 
-  card.dataset.swiped = "true";
+
+  card.dataset.swiped =
+    "true";
+
 
   const amount =
-    direction === "right" ? 800 : -800;
+    direction === "right"
+      ? 800
+      : -800;
+
 
   const rotation =
-    direction === "right" ? 25 : -25;
+    direction === "right"
+      ? 25
+      : -25;
+
 
   card.style.transition =
     "transform .28s ease, opacity .28s ease";
 
-  card.style.transform =
-    `translateX(${amount}px) rotate(${rotation}deg)`;
 
-  card.style.opacity = "0";
+  card.style.transform =
+    `translateX(${amount}px)
+     rotate(${rotation}deg)`;
+
+
+  card.style.opacity =
+    "0";
+
 
   setTimeout(
     function() {
 
-      if (direction === "right") {
-        /* Right = NEXT PROFESSOR */
+      if (
+        direction === "right"
+      ) {
+
+        /*
+         * RIGHT SWIPE
+         * = NEXT PROFESSOR
+         */
+
         index =
-          (index + 1) % professors.length;
+          (index + 1) %
+          professors.length;
+
       } else {
-        /* Left = PREVIOUS PROFESSOR */
+
+        /*
+         * LEFT SWIPE
+         * = PREVIOUS PROFESSOR
+         */
+
         index =
-          (index - 1 + professors.length) % professors.length;
+          (index - 1 + professors.length) %
+          professors.length;
+
       }
+
 
       render();
 
     },
     280
   );
+
 }
 
 
-/* MATCH SCREEN */
+/* =========================================================
+   SHOW MATCH
+   ========================================================= */
 
 function showMatch(p) {
 
+  if (!p) {
+    return;
+  }
+
+
+  matchedProfessor =
+    p;
+
+
   matchText.innerHTML = `
+
     <b>${p.name}</b>
     looks like a great match
     for your interests.
@@ -1221,70 +1515,152 @@ function showMatch(p) {
 
     Office hour:
     ${p.availability}
+
   `;
 
-  match.classList.add("show");
 
-  bookBtn.onclick = function() {
+  match.classList.add(
+    "show"
+  );
 
-    const calendlyURL =
-      CALENDLY_LINKS[p.name];
-
-    if (calendlyURL) {
-      window.location.href = calendlyURL;
-    } else {
-      alert(
-        `No connection link has been configured for ${p.name} yet.`
-      );
-    }
-  };
 }
 
 
-/* PASS BUTTON */
+/* =========================================================
+   X BUTTON
+   ========================================================= */
+
+/*
+ * X does NOT open Match.
+ *
+ * X = NEXT PROFESSOR
+ */
 
 passBtn.onclick = function() {
 
+  if (
+    match.classList.contains("show")
+  ) {
+    return;
+  }
+
+
   const card =
     deck.querySelector(
       ".card:not([data-swiped='true'])"
     );
 
-  if (card) {
-    swipe("left", card);
+
+  if (!card) {
+    return;
   }
+
+
+  swipe(
+    "right",
+    card
+  );
+
 };
 
 
-/* MEET / NEXT BUTTON */
+/* =========================================================
+   HEART BUTTON
+   ========================================================= */
+
+/*
+ * Heart DOES NOT move to another professor.
+ *
+ * Heart = MATCH SCREEN
+ *
+ * The currently displayed professor
+ * becomes the matched professor.
+ */
 
 likeBtn.onclick = function() {
 
-  const card =
-    deck.querySelector(
-      ".card:not([data-swiped='true'])"
-    );
-
-  if (card) {
-    swipe("right", card);
+  if (
+    match.classList.contains("show")
+  ) {
+    return;
   }
+
+
+  const currentProfessor =
+    professors[index];
+
+
+  showMatch(
+    currentProfessor
+  );
+
 };
 
 
-/* RESTART */
+/* =========================================================
+   SCHEDULE A MEETING
+   ========================================================= */
+
+bookBtn.onclick = function() {
+
+  if (!matchedProfessor) {
+    return;
+  }
+
+
+  const link =
+    CALENDLY_LINKS[
+      matchedProfessor.name
+    ];
+
+
+  if (!link) {
+
+    alert(
+      `No connection link has been configured for ${matchedProfessor.name} yet.`
+    );
+
+    return;
+  }
+
+
+  /*
+   * Open the professor's actual
+   * scheduling / faculty page.
+   */
+
+  window.open(
+    link,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+};
+
+
+/* =========================================================
+   CONTINUE BROWSING
+   ========================================================= */
 
 restartBtn.onclick = function() {
 
-  dragging = false;
-  activeCard = null;
+  match.classList.remove(
+    "show"
+  );
 
-  match.classList.remove("show");
+
+  matchedProfessor =
+    null;
+
 
   render();
+
 };
 
 
-/* INITIALIZE */
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
 render();
 
